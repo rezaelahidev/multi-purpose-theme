@@ -13,6 +13,8 @@ project:
     - "cross-cutting-business-context: B2B"
     - "primary-launch-archetype: ecommerce"
     - "second-priority-launch-archetype: blog-magazine"
+    - "dual-market-experience: international-and-iranian-users-across-all-archetypes"
+    - "iranian-localization: persian-fa-ir-rtl-ltr-mixed-content-and-local-ecosystem-readiness"
   pending_approvals:
     - "product-scope"
     - "core-architecture-v0.2"
