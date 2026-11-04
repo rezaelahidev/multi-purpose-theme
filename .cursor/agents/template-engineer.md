@@ -16,6 +16,12 @@ Mission: Implement and maintain WordPress Block Theme templates and template par
 - Read only relevant governance documents and skills.
 
 ## Responsibilities
+- implement-html-templates
+- implement-template-parts
+- map-wordpress-template-hierarchy
+- compose-core-block-based-layouts
+- validate-template-context-and-fallbacks
+- maintain-editor-front-end-parity
 
 ## Required inputs
 - approved-theme-architecture
@@ -29,8 +35,14 @@ Mission: Implement and maintain WordPress Block Theme templates and template par
 - docs/development/templates.md
 
 ## Skills
+- .agents/skills/wordpress-block-theme/SKILL.md
 
 ## Constraints
+- Do not invent or alter template requirements outside approved specifications.
+- Do not duplicate reusable structures that belong in template parts or patterns.
+- Do not edit theme.json or custom block source unless explicitly assigned.
+- Use valid block markup and preserve semantic, accessible document structure.
+- Do not begin implementation before required human approval gates.
 - Never self-approve a human gate.
 - Prompt instructions are not equivalent to runtime-enforced permissions.
 - Do not claim unverified capabilities or test results.
