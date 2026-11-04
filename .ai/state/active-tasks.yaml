@@ -126,3 +126,37 @@ tasks:
     approval:
       required: true
       status: "pending"
+  - id: "TASK-UX-FOUNDATION-001"
+    title: "Review UX foundation discovery and decide launch design inputs"
+    status: "READY"
+    assigned_agent: "human"
+    dependencies:
+      - "TASK-AGENTS-002"
+    inputs:
+      - "docs/design/ux-foundation-discovery.md"
+      - ".ai/core/quality-gates.md"
+    expected_outputs:
+      - "Approved product scope and launch site archetypes"
+      - "Primary site-owner audience and customization philosophy"
+      - "Minimum WordPress version and RTL launch requirement"
+    acceptance_criteria:
+      - "Primary and secondary launch site archetypes are selected"
+      - "Primary site-owner audience is identified"
+      - "Customization philosophy is selected"
+      - "Minimum WordPress version is explicitly decided"
+      - "RTL/Persian launch requirement is explicitly decided"
+      - "Product Scope and Architecture approval state is reviewed and recorded"
+    file_scope:
+      include:
+        - "docs/requirements/**"
+        - "docs/design/**"
+        - ".ai/state/**"
+      exclude:
+        - "theme.json"
+        - "templates/**"
+        - "parts/**"
+        - "patterns/**"
+        - "blocks/**"
+    approval:
+      required: true
+      status: "pending"
