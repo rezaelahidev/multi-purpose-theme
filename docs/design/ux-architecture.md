@@ -1,6 +1,6 @@
 # UX Architecture — Multi-Purpose Block Theme
 
-- Status: Draft proposal — not approved for implementation
+- Status: Draft proposal — priority archetypes selected; implementation not approved
 - Version: 0.1.0
 - Date: 2026-11-05
 - Product: WordPress Multi-Purpose Block Theme
@@ -26,6 +26,10 @@ This document defines a proposed user-experience architecture for a single WordP
 The goal is not to ship seven unrelated themes or seven hard-coded demo sites. The proposed product is one coherent theme system with reusable structural templates, composable page patterns, a small number of visual style variations, and clear customization boundaries.
 
 This is a UX proposal, not an approved product brief. It does not authorize theme implementation, plugin-specific integrations, or final visual/token decisions.
+
+### First-release priority
+
+The product owner selected **E-commerce** as the primary launch archetype and **Blog / Magazine** as the second priority. The other five archetypes remain in the first-release scope, and B2B remains a cross-cutting context. Prioritization determines design depth and validation sequence; it does not remove any selected archetype from scope.
 
 ## 2. Product experience model
 
@@ -191,7 +195,7 @@ This is a recommendation, not a finalized decision. The owner must explicitly ch
 |---|---|---|
 | First-release archetypes | **Selected by owner:** all seven listed archetypes | Drives information architecture and journey coverage |
 | B2B | **Selected by owner as cross-cutting requirement** | Adds trust, procurement, integration and lead-generation paths |
-| Primary launch archetype(s) | Open | Determines depth and prioritization for MVP |
+| Primary launch archetype(s) | **Selected:** E-commerce (primary), Blog / Magazine (second) | Determines depth and prioritization for MVP |
 | Primary site-owner persona | Open | Determines onboarding complexity and editor guidance |
 | Customization philosophy | Proposed curated flexibility; not approved | Determines exposed controls and variation strategy |
 | Minimum WordPress version | Open | Determines `theme.json` schema and supported features |
@@ -204,7 +208,7 @@ This is a recommendation, not a finalized decision. The owner must explicitly ch
 This document can be reviewed as a UX architecture proposal, but it is not an approved implementation specification. Before the Design System Agent defines canonical token values or the theme implementation begins:
 
 1. Product Scope and Architecture gates must be explicitly reviewed and recorded.
-2. Primary archetype(s), target site-owner persona, customization philosophy, minimum WordPress version, and RTL/Persian launch requirement must be decided.
+2. Target site-owner persona, customization philosophy, minimum WordPress version, and RTL/Persian launch requirement must be decided. Primary archetypes are selected: E-commerce first, Blog / Magazine second.
 3. Commerce, LMS, and community plugin targets must be selected or explicitly deferred.
 4. User journeys and interface specifications must be reviewed by the human owner.
 5. The Design System Agent may then translate approved UX requirements into semantic tokens and `theme.json` mapping proposals.
