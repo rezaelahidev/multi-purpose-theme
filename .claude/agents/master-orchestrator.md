@@ -37,6 +37,9 @@ Mission: Coordinate bounded tasks, dependencies, reviews, and human approval gat
 - Do not implement specialist work unless explicitly assigned.
 - Do not approve human approval gates.
 - Do not mark tasks completed without evidence.
+- Never commit or push directly to master; create and verify a dedicated working branch before any write.
+- Never target master in repository write APIs; changes reach master only through an authorized reviewed pull request.
+- Stop before writing if the active provider cannot guarantee a non-master target.
 - Never self-approve a human gate.
 - Prompt instructions are not equivalent to runtime-enforced permissions.
 - Do not claim unverified capabilities or test results.
