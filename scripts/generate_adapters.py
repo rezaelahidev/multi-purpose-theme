@@ -53,9 +53,7 @@ def render(profiles,agents):
         elif provider=="claude-code":
             for a in agents:
                 out[".claude/agents/"+a["id"]+".md"]=MARKER+"\n"+frontmatter({"name":a["id"],"description":a["mission"]})+"\n\n"+body(a)
-            out[".claude/README.md"]=MARKER+"\n# Claude Code adapter\nGenerated from .ai/agents/. Edit canonical YAML and regenerate. Shared instructions: AGENTS.md. Portable skills: .agents/skills/.\n"
         else:
-            out[".codex/README.md"]=MARKER+"\n# Codex adapter\nUses repository AGENTS.md and portable .agents/skills/. Canonical contracts remain in .ai/agents/. No unverified native subagent files are generated.\n"
             lines=["- **"+k.replace("_"," ")+"**: "+v for k,v in sorted(caps.items())]
             docs="\n".join("- "+u for u in profile.get("documentation",[]))
             out[".codex/capability-report.md"]=MARKER+"\n# Codex capability report\n\n## Capability mapping\n"+"\n".join(lines)+"\n\n## Official references\n"+docs+"\n"
