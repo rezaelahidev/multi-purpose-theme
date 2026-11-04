@@ -269,7 +269,64 @@ Every journey must satisfy these baseline checks before release:
 - RTL and long translated content are tested, not inferred from LTR screenshots.
 - Plugin-owned journeys are included in compatibility tests for every declared supported plugin/version.
 
-## 8. Prioritization proposal
+
+## 8. Dual-market journeys: international and Iranian users
+
+All journeys above must work for both general/international users and Iranian users. Persian/RTL is a first-class localization path, not a separate archetype or optional polish task. The same journey must be validated in English/LTR, Persian/RTL and mixed-direction content.
+
+### J-LOCALE-01 — Iranian site owner launches a Persian-first or bilingual site
+
+1. Installs and activates the theme in a WordPress environment that may have Persian as its site language.
+2. Selects an archetype starting point without being forced into an Iran-only design.
+3. Applies a visual variation and configures Persian typography, logo and brand colors.
+4. Builds RTL navigation and page layouts; mixed Latin product names, URLs, email addresses and codes remain readable.
+5. Creates Persian content with correct Persian character forms, ZWNJ, natural line breaks and localized CTA copy.
+6. Configures local services through compatible plugins where required (payment, shipping, SMS, forms, LMS or membership).
+7. Previews Persian RTL, English LTR and mixed-content states on mobile and desktop.
+8. Publishes with clear fallbacks when a local or international external service is unavailable.
+
+**Success criteria:** the owner can create a production-usable Persian/RTL site without custom CSS workarounds for ordinary layouts, while retaining the option to serve international visitors.
+
+### J-LOCALE-02 — Iranian shopper completes an e-commerce journey
+
+1. Discovers a shop, category or product page in Persian or English.
+2. Understands product title, attributes, availability, price and any shipping/return information.
+3. Sees an unambiguous currency label and configured toman/rial presentation; no currency conversion is inferred by the theme.
+4. Uses product options and purchase controls in an RTL-safe layout with readable mixed Latin model numbers/SKUs.
+5. Proceeds through the configured WooCommerce checkout and payment extension.
+6. Receives plugin-owned order/payment feedback and can find support/contact information.
+
+**Theme responsibility:** product/shop presentation, RTL-safe layout, readable localized price labels and notices.  
+**Plugin responsibility:** currency storage/conversion, gateway, shipping calculations, tax, inventory, checkout validation and order processing.
+
+### J-LOCALE-03 — Iranian reader consumes a Blog / Magazine
+
+1. Arrives at a Persian editorial homepage, archive, search result or article.
+2. Scans Persian titles, summaries, author/date metadata and category labels with correct RTL typography.
+3. Reads long-form content with appropriate line length, line-height, punctuation, image captions and embedded Latin terms.
+4. Navigates to related articles, categories, authors or search without directionality regressions.
+5. Optionally subscribes or contacts the publisher using a configured service.
+
+**Theme responsibility:** editorial hierarchy, RTL typography, archive/article templates and accessible navigation.  
+**Integration responsibility:** newsletter delivery, SMS, analytics or other external services.
+
+### J-LOCALE-04 — Iranian learner/member/customer uses other archetypes
+
+For Business/Corporate, Agency/Portfolio, SaaS, Education/LMS and Community/Membership, apply the same localized journey rules: natural Persian copy and CTAs; RTL-safe forms, navigation, pricing and account presentation; locally relevant contact/service options where configured; and plugin-owned access/payment behavior. International LTR use must remain fully supported.
+
+### Localized edge cases to test
+
+- Persian/Arabic character variants, ZWNJ and mixed-script shaping.
+- Long Persian menu labels and headings; no clipping or forced truncation of meaningful text.
+- Persian, Arabic and Latin numerals; date/calendar presentation; timezone display.
+- Toman/rial labels and digit grouping without theme-side currency conversion.
+- Mixed-direction product names, SKUs, phone numbers, URLs, email addresses and coupon codes.
+- Local gateway/shipping/SMS/form plugin absent, disabled, incompatible or unreachable.
+- External fonts/CDNs/services unavailable; local fallback remains usable.
+- Language switch preserves the equivalent page context when a translation exists.
+- RTL keyboard navigation, focus order, icons, chevrons, carousels and responsive menu behavior.
+
+## 9. Prioritization proposal
 
 All seven archetypes remain in the first-release target set. The product owner selected E-commerce as the primary launch archetype and Blog / Magazine as the second priority. Prioritize shared foundations first, then validate these two journeys in depth before extending the same system to the remaining archetypes.
 
@@ -291,7 +348,7 @@ All seven archetypes remain in the first-release target set. The product owner s
 
 This ordering is a planning recommendation, not a final MVP commitment. The owner must select the primary launch archetype(s) before effort estimates and implementation sequencing are approved.
 
-## 9. Open decisions
+## 10. Open decisions
 
 1. **Resolved:** E-commerce is the primary launch archetype; Blog / Magazine is second. The remaining archetypes stay in first-release scope.
 2. Who is the primary site creator: beginner site owner, designer/agency, or developer?
@@ -302,7 +359,7 @@ This ordering is a planning recommendation, not a final MVP commitment. The owne
 7. Does the first release include starter-site/demo import, or only patterns/templates/style variations?
 8. Which conversion mechanisms (forms, newsletter, booking, lead capture) are expected to be provided by third-party plugins?
 
-## 10. Handoff
+## 11. Handoff
 
 After owner review and upstream approvals, the UX/UI Architect should produce interface specifications for the selected priority journeys and hand approved UX constraints to the Design System Agent. The Design System Agent should translate these into semantic token and variation proposals. The Theme Architect must validate WordPress-version and plugin-compatibility assumptions.
 
