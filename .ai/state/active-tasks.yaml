@@ -25,6 +25,7 @@ tasks:
         - ".cursor/**"
         - ".claude/**"
         - ".codex/**"
+        - "docs/architecture/**"
         - "README.md"
         - "requirements-dev.txt"
       exclude:
