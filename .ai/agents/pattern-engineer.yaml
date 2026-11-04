@@ -54,7 +54,7 @@ agent:
       - "Pattern metadata and categories are valid for the target WordPress version."
       - "Patterns compose cleanly with templates, styles, and core blocks."
   handoff:
-    target: "pattern-engineer"
+    target: "qa-agent"
     approval_required: true
   escalation:
     conditions:
