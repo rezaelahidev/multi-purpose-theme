@@ -52,7 +52,7 @@ enforced controls unless a tested native mapping exists.
 ### Claude Code
 Generate:
 - `.claude/agents/{agent-id}.md` using Claude Code subagent Markdown and YAML frontmatter.
-- `.claude/README.md` describing generation and the canonical source.
+Existing `.claude/README.md` remains hand-maintained and is not overwritten by the generator.
 
 The agent body references canonical contracts and requires the subagent to inspect
 the active task before acting. Native tool allowlists or permission modes are not
@@ -62,8 +62,7 @@ inferred from the generic permission object in v0.2.
 Codex uses repository-level `AGENTS.md` instructions and the portable
 `.agents/skills/` convention. The adapter generator does not create fictitious
 Codex-native agent definitions. It generates:
-- `.codex/README.md` explaining the shared instruction and skill discovery path.
-- `.codex/capability-report.md` describing supported and unverified mappings.
+- `.codex/capability-report.md` describing supported and unverified mappings. Existing `.codex/README.md` remains hand-maintained.
 
 The root `AGENTS.md` remains human-maintained and authoritative as shared repository
 guidance. It is not overwritten by the generator.
@@ -104,5 +103,5 @@ A migration passes when the target runtime can:
 ## 8. Verification policy
 Provider formats and capabilities change. Before adding or changing a native mapping,
 verify it against current official provider documentation and record the documentation
-URL and verification date in the provider profile. An unverified mapping stays
+URL and verification date in the provider profile. Existing provisional classifications must be treated as unverified until checked. An unverified mapping stays
 `unverified` or `unsupported`, never `native`.
