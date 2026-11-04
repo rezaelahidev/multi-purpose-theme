@@ -3,6 +3,7 @@ import io
 import json
 import sys
 import tempfile
+import tomllib
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -187,7 +188,10 @@ class GeneratorRenderTests(unittest.TestCase):
         self.assertIn(".cursor/agents/sample-agent.md", output)
         self.assertIn(".claude/agents/sample-agent.md", output)
         self.assertIn(".codex/agents/sample-agent.toml", output)
-        self.assertIn('developer_instructions = "', output[".codex/agents/sample-agent.toml"])
+        codex_agent = tomllib.loads(output[".codex/agents/sample-agent.toml"].split("\n", 1)[1])
+        self.assertEqual(codex_agent["name"], "sample-agent")
+        self.assertEqual(codex_agent["description"], "Perform a bounded sample task.")
+        self.assertIn("Canonical agent: sample-agent@1.0.0", codex_agent["developer_instructions"])
         self.assertIn(".codex/capability-report.md", output)
 
     def test_codex_generated_path_is_allowed(self):
