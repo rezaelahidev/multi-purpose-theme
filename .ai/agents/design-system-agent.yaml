@@ -55,7 +55,7 @@ agent:
       - "Style variations and global styles remain coherent and accessible."
       - "Changes are versioned and migration impacts are documented."
   handoff:
-    target: "design-system-agent"
+    target: "theme-architect"
     approval_required: true
   escalation:
     conditions:
