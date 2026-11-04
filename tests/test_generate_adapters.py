@@ -142,7 +142,7 @@ class GeneratorRenderTests(unittest.TestCase):
             stale = root / ".cursor/agents/retired-agent.md"
             stale.parent.mkdir(parents=True)
             stale.write_text("manual content\n", encoding="utf-8")
-            manifest.write_text(json.dumps({"version": 1, "files": {".cursor/agents/retired-agent.md": "oldhash"}}), encoding="utf-8")
+            manifest.write_text(json.dumps({"version": 1, "files": {".cursor/agents/retired-agent.md": "a" * 64}}), encoding="utf-8")
             with patch.object(generator, "ROOT", root), patch.object(generator, "MANIFEST", manifest), patch.object(sys, "argv", ["generate_adapters.py", "--write"]), contextlib.redirect_stderr(io.StringIO()):
                 self.assertEqual(generator.main(), 2)
             self.assertEqual(stale.read_text(encoding="utf-8"), "manual content\n")
