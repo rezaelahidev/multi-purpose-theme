@@ -68,7 +68,8 @@ custom agents as standalone TOML files under `.codex/agents/`. Generate:
 Existing `.codex/README.md` remains hand-maintained.
 
 The root `AGENTS.md` remains human-maintained and authoritative as shared repository
-guidance. It is not overwritten by the generator.
+guidance. It is not overwritten by the generator. Codex discovers project skills from
+`.agents/skills/`; the current canonical skill layout is directly discoverable there.
 
 ## 5. Capability semantics
 Each provider capability is classified as:
