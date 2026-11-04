@@ -37,7 +37,7 @@ tasks:
       status: "pending"
   - id: "TASK-AGENTS-001"
     title: "Define and validate the initial WordPress Block Theme agent roster"
-    status: "REVIEW"
+    status: "APPROVED"
     assigned_agent: "master-orchestrator"
     dependencies: []
     inputs:
@@ -68,6 +68,55 @@ tasks:
         - ".claude/agents/**"
         - ".codex/agents/**"
         - "docs/architecture/specialist-agent-roster.md"
+      exclude:
+        - "style.css"
+        - "templates/**"
+        - "parts/**"
+        - "patterns/**"
+        - "theme.json"
+    approval:
+      required: true
+      status: "approved"
+  - id: "TASK-AGENTS-002"
+    title: "Define and validate the expanded WordPress Block Theme specialist roster"
+    status: "IN_PROGRESS"
+    assigned_agent: "master-orchestrator"
+    dependencies:
+      - "TASK-AGENTS-001"
+    inputs:
+      - ".ai/contracts/agent.schema.json"
+      - ".ai/core/agent-contract.md"
+      - ".ai/core/provider-adapter-spec.md"
+      - ".agents/skills/wordpress-block-theme/SKILL.md"
+      - "docs/architecture/specialist-agent-roster.md"
+    expected_outputs:
+      - ".ai/agents/ux-ui-architect.yaml"
+      - ".ai/agents/design-system-agent.yaml"
+      - ".ai/agents/block-development-agent.yaml"
+      - ".ai/agents/template-engineer.yaml"
+      - ".ai/agents/pattern-engineer.yaml"
+      - ".ai/agents/performance-agent.yaml"
+      - ".ai/agents/security-agent.yaml"
+      - ".ai/agents/documentation-agent.yaml"
+      - "docs/architecture/specialist-agent-roster.md"
+      - ".ai/adapters/generated-manifest.json"
+    acceptance_criteria:
+      - "Every specialist contract validates against the Agent JSON Schema"
+      - "Agent ownership and file scopes are explicit and non-conflicting"
+      - "Implementation agents require all relevant human approval gates"
+      - "Reviewer agents remain independent from implementation owners"
+      - "All Cursor, Claude Code, and Codex adapters are generated and synchronized"
+      - "GitHub Actions validation passes on the resulting commit"
+    file_scope:
+      include:
+        - ".ai/agents/**"
+        - ".ai/state/active-tasks.yaml"
+        - ".ai/state/project-status.yaml"
+        - ".ai/adapters/generated-manifest.json"
+        - ".cursor/agents/**"
+        - ".claude/agents/**"
+        - ".codex/agents/**"
+        - "docs/architecture/**"
       exclude:
         - "style.css"
         - "templates/**"
