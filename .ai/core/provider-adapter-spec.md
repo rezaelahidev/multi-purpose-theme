@@ -40,17 +40,19 @@ python scripts/generate_adapters.py --check
 
 ### Cursor
 Generate:
-- `.cursor/agents/{agent-id}.md` using Cursor's project subagent Markdown format.
+- `.cursor/agents/{agent-id}.md` using Cursor's project subagent Markdown format, but only after subagent support is verified.
 - `.cursor/rules/ai-core.mdc` as an always-applied bridge to repository governance.
 
-The agent body references the canonical agent YAML, root instructions, task state,
+If subagent support is unverified, generate a capability report instead of native agent files.
+
+The agent body references the canonical agent YAML, root instructions,
 and relevant skills. Only metadata with a verified native mapping is emitted as
 frontmatter. Tool permissions are repeated as instructions but are not represented as
 enforced controls unless a tested native mapping exists.
 
 ### Claude Code
 Generate:
-- `.claude/agents/{agent-id}.md` using Claude Code subagent Markdown and YAML frontmatter.
+- `.claude/agents/{agent-id}.md` using Claude Code subagent Markdown and YAML frontmatter, but only after subagent support is verified.
 Existing `.claude/README.md` remains hand-maintained and is not overwritten by the generator.
 
 The agent body references canonical contracts and requires the subagent to inspect
