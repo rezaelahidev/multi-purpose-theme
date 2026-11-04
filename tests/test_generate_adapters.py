@@ -27,12 +27,12 @@ def agent(agent_id="sample-agent"):
     }
 
 
-def profiles(subagents="unverified"):
+def profiles(subagents="unverified", verified=False):
     result = {}
     for provider in sorted(generator.PROVIDERS):
         result[provider] = {
-            "verification_status": "pending",
-            "last_verified": None,
+            "verification_status": "verified" if verified else "pending",
+            "last_verified": "2026-11-04" if verified else None,
             "capabilities": {
                 "subagents": subagents if provider in {"cursor", "claude-code"} else "unverified",
                 "skills": "shared",
@@ -124,7 +124,7 @@ class GeneratorRenderTests(unittest.TestCase):
             stale = root / ".cursor/agents/retired-agent.md"
             stale.parent.mkdir(parents=True)
             stale.write_text(generator.MARKER + "\nretired\n", encoding="utf-8")
-            manifest.write_text(json.dumps({"version": 1, "files": {".cursor/agents/retired-agent.md": "oldhash"}}), encoding="utf-8")
+            manifest.write_text(json.dumps({"version": 1, "files": {".cursor/agents/retired-agent.md": "a" * 64}}), encoding="utf-8")
             with patch.object(generator, "ROOT", root), patch.object(generator, "MANIFEST", manifest), patch.object(sys, "argv", ["generate_adapters.py", "--write"]), contextlib.redirect_stdout(io.StringIO()):
                 self.assertEqual(generator.main(), 0)
             self.assertFalse(stale.exists())
@@ -180,6 +180,48 @@ class GeneratorRenderTests(unittest.TestCase):
             with patch.object(generator, "ROOT", root), patch.object(generator, "MANIFEST", manifest), patch.object(sys, "argv", ["generate_adapters.py", "--write"]), contextlib.redirect_stderr(io.StringIO()):
                 self.assertEqual(generator.main(), 2)
             self.assertTrue(manual.exists())
+
+
+    def test_verified_profiles_emit_native_agent_files_for_all_providers(self):
+        output = generator.render(profiles(subagents="native", verified=True), [agent()])
+        self.assertIn(".cursor/agents/sample-agent.md", output)
+        self.assertIn(".claude/agents/sample-agent.md", output)
+        self.assertIn(".codex/agents/sample-agent.toml", output)
+        self.assertIn('developer_instructions = "', output[".codex/agents/sample-agent.toml"])
+        self.assertIn(".codex/capability-report.md", output)
+
+    def test_codex_generated_path_is_allowed(self):
+        with tempfile.TemporaryDirectory() as temp:
+            with patch.object(generator, "ROOT", Path(temp)):
+                path = generator.safe_path(".codex/agents/research-agent.toml")
+                self.assertEqual(path, Path(temp) / ".codex/agents/research-agent.toml")
+
+    def test_invalid_calendar_verification_date_is_rejected(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / ".ai/adapters").mkdir(parents=True)
+            (root / ".ai/agents").mkdir(parents=True)
+            import yaml
+            cfg = {"version": "1.0", "providers": profiles(subagents="native", verified=True)}
+            cfg["providers"]["cursor"]["last_verified"] = "2026-99-45"
+            (root / ".ai/adapters/providers.yaml").write_text(yaml.safe_dump(cfg), encoding="utf-8")
+            (root / ".ai/agents/sample.yaml").write_text(yaml.safe_dump({"agent": agent()}), encoding="utf-8")
+            with patch.object(generator, "ROOT", root), patch.object(generator, "MANIFEST", root / ".ai/adapters/generated-manifest.json"), patch.object(sys, "argv", ["generate_adapters.py", "--write"]), contextlib.redirect_stderr(io.StringIO()):
+                self.assertEqual(generator.main(), 2)
+
+    def test_manifest_rejects_unapproved_paths(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / ".ai/adapters").mkdir(parents=True)
+            (root / ".ai/agents").mkdir(parents=True)
+            import yaml
+            (root / ".ai/adapters/providers.yaml").write_text(yaml.safe_dump({"version": "1.0", "providers": profiles()}), encoding="utf-8")
+            (root / ".ai/agents/sample.yaml").write_text(yaml.safe_dump({"agent": agent()}), encoding="utf-8")
+            manifest = root / ".ai/adapters/generated-manifest.json"
+            manifest.write_text(json.dumps({"version": 1, "files": {"AGENTS.md": "a" * 64}}), encoding="utf-8")
+            with patch.object(generator, "ROOT", root), patch.object(generator, "MANIFEST", manifest), patch.object(sys, "argv", ["generate_adapters.py", "--write"]), contextlib.redirect_stderr(io.StringIO()):
+                self.assertEqual(generator.main(), 2)
+
 
 
 if __name__ == "__main__":
