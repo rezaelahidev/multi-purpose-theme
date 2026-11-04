@@ -35,7 +35,7 @@
     ".codex/agents/performance-agent.toml": "13690e235a8214eb55aa257b1fcdf35e841a6ff3e9c1062eee1a3064a1083908",
     ".codex/agents/security-agent.toml": "15ba44cfc955cc67d4c4bfe8f839c89b08a76333eceb475a0ece8675a5040f9c",
     ".codex/agents/template-engineer.toml": "dc7417eb477802d47e21aec3292dc7ca92c75864f6b5b5ad75cad521ec7f4a41",
-    ".codex/agents/ux-ui-architect.toml": "77e32ab5995cb168b774cf0051df58e3e20814330bf0eae618228de4a0f5eeb4",
+    ".codex/agents/ux-ui-architect.toml": "23592a2d8de33a9197fb48d2eacdbde40ca6e82ce119a7011f2446c9184f0850",
     ".cursor/agents/block-development-agent.md": "b1c559e23f3c26b2c929abae9f38d12ef7f5230eaf21d9c22f1d9a8fcb373488",
     ".cursor/agents/design-system-agent.md": "e4dd073a78f425adc7ad3286e8f86f02553a927dc7a8e7c7d28f4dbd9d08af13",
     ".cursor/agents/documentation-agent.md": "f49371beebbf2d7dd0f56d94d004435136d58e4540f54c73b937439ac2161be0",
