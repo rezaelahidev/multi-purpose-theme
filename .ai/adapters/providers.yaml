@@ -4,11 +4,11 @@ providers:
     display_name: "Cursor"
     capabilities:
       repository_instructions: "shared"
-      subagents: "native"
+      subagents: "unverified"
       skills: "shared"
       tool_configuration: "unverified"
       permission_enforcement: "unverified"
-      delegation: "native"
+      delegation: "unverified"
     documentation:
       - "https://cursor.com/docs/context/rules"
       - "https://cursor.com/docs/agents/subagents"
@@ -17,7 +17,7 @@ providers:
     capabilities:
       repository_instructions: "shared"
       subagents: "native"
-      skills: "native"
+      skills: "unverified"
       tool_configuration: "unverified"
       permission_enforcement: "unverified"
       delegation: "native"
@@ -27,7 +27,7 @@ providers:
   codex:
     display_name: "OpenAI Codex"
     capabilities:
-      repository_instructions: "native"
+      repository_instructions: "shared"
       subagents: "unverified"
       skills: "shared"
       tool_configuration: "unverified"
