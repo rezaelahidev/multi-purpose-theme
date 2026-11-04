@@ -1,0 +1,38 @@
+version: "1.0"
+providers:
+  cursor:
+    display_name: "Cursor"
+    capabilities:
+      repository_instructions: "shared"
+      subagents: "native"
+      skills: "shared"
+      tool_configuration: "unverified"
+      permission_enforcement: "unverified"
+      delegation: "native"
+    documentation:
+      - "https://cursor.com/docs/context/rules"
+      - "https://cursor.com/docs/agents/subagents"
+  claude-code:
+    display_name: "Claude Code"
+    capabilities:
+      repository_instructions: "shared"
+      subagents: "native"
+      skills: "native"
+      tool_configuration: "native"
+      permission_enforcement: "native"
+      delegation: "native"
+    documentation:
+      - "https://docs.anthropic.com/en/docs/claude-code/sub-agents"
+      - "https://docs.anthropic.com/en/docs/claude-code/settings"
+  codex:
+    display_name: "OpenAI Codex"
+    capabilities:
+      repository_instructions: "native"
+      subagents: "unverified"
+      skills: "shared"
+      tool_configuration: "unverified"
+      permission_enforcement: "unverified"
+      delegation: "unverified"
+    documentation:
+      - "https://developers.openai.com/codex/guides/agents-md/"
+      - "https://developers.openai.com/codex/skills/"
