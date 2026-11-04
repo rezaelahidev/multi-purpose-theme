@@ -2,6 +2,8 @@ version: "1.0"
 providers:
   cursor:
     display_name: "Cursor"
+    verification_status: "pending"
+    last_verified: null
     capabilities:
       repository_instructions: "shared"
       subagents: "unverified"
@@ -14,6 +16,8 @@ providers:
       - "https://cursor.com/docs/agents/subagents"
   claude-code:
     display_name: "Claude Code"
+    verification_status: "pending"
+    last_verified: null
     capabilities:
       repository_instructions: "shared"
       subagents: "unverified"
@@ -26,6 +30,8 @@ providers:
       - "https://docs.anthropic.com/en/docs/claude-code/settings"
   codex:
     display_name: "OpenAI Codex"
+    verification_status: "pending"
+    last_verified: null
     capabilities:
       repository_instructions: "shared"
       subagents: "unverified"
