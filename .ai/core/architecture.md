@@ -49,6 +49,16 @@ authoritative home of agent intent, permissions, workflow logic, or project know
   permission boundary. The adapter must distinguish the two.
 - Runtime capability gaps must be reported, never silently ignored.
 
+## 5.1 Git branch governance (mandatory)
+
+No agent, orchestrator, adapter, automation, or script may commit or push directly to
+`master`. All repository mutations occur on a dedicated verified working branch and
+are delivered through a Pull Request with validation and review. Read-only access to
+`master` and branch creation from it are allowed. If the active runtime cannot verify
+or target a non-master branch, it must stop before writing. This policy applies to every
+provider adapter and survives provider migration. Repository branch protection should
+technically require PRs and block direct pushes wherever administrative access permits.
+
 ## 6. Initial execution model
 The first iteration is file-based and human-supervised. It does not require a separate
 orchestration server or framework. Generation and validation are local deterministic

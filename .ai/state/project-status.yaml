@@ -2,7 +2,7 @@ project:
   id: "wordpress-multipurpose-block-theme"
   name: "WordPress Multi-Purpose Block Theme"
   lifecycle: "architecture"
-  current_phase: "ux-architecture-review"
+  current_phase: "ux-interface-specifications-review"
   status: "design-in-progress"
   source_of_truth: "git"
   approved_decisions:
@@ -15,10 +15,12 @@ project:
     - "second-priority-launch-archetype: blog-magazine"
     - "dual-market-experience: international-and-iranian-users-across-all-archetypes"
     - "iranian-localization: persian-fa-ir-rtl-ltr-mixed-content-and-local-ecosystem-readiness"
+    - "git-governance: no-agent-or-automation-direct-commit-to-master; feature-branch-and-pr-only"
   pending_approvals:
     - "product-scope"
     - "core-architecture-v0.2"
     - "expanded-specialist-agent-roster-v0.1"
     - "ux-architecture-and-user-journeys-v0.1"
+    - "ux-interface-specifications-ecommerce-blog-v0.1"
     - "design-system-baseline"
   last_reviewed: "2026-11-05"
