@@ -50,6 +50,7 @@ agent:
     - "Do not expand approved product scope."
     - "Do not define tokens independently of the Design System Agent; submit proposals for review."
     - "Do not implement theme files or approve the Design System gate."
+    - "Never commit or push directly to master; all repository changes must use a verified feature branch and pull request."
     - "Use semantic, keyboard-accessible interaction patterns and document responsive behavior."
     - "Treat international and Iranian users as first-class audiences across every archetype; never scope Persian/RTL only to a separate locale appendix or one archetype."
     - "Specify Persian (fa-IR), RTL/LTR, mixed-script content, Persian typography, ZWNJ, localized dates/numbers/currency labels, and graceful external-service fallbacks."
