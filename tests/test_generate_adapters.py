@@ -147,5 +147,40 @@ class GeneratorRenderTests(unittest.TestCase):
             self.assertEqual(stale.read_text(encoding="utf-8"), "manual content\n")
 
 
+    def test_non_output_manifest_path_is_rejected(self):
+        with tempfile.TemporaryDirectory() as temp:
+            with patch.object(generator, "ROOT", Path(temp)):
+                with self.assertRaises(ValueError):
+                    generator.safe_path(".cursor/README.md")
+
+    def test_symlink_output_path_is_rejected(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / ".cursor/rules").mkdir(parents=True)
+            outside = root / "AGENTS.md"
+            outside.write_text("hand maintained\n", encoding="utf-8")
+            (root / ".cursor/rules/ai-core.mdc").symlink_to(outside)
+            with patch.object(generator, "ROOT", root):
+                with self.assertRaises(ValueError):
+                    generator.safe_path(".cursor/rules/ai-core.mdc")
+
+    def test_manifest_cannot_delete_hand_maintained_provider_file(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / ".ai/adapters").mkdir(parents=True)
+            (root / ".ai/agents").mkdir(parents=True)
+            import yaml
+            (root / ".ai/adapters/providers.yaml").write_text(yaml.safe_dump({"version": "1.0", "providers": profiles()}), encoding="utf-8")
+            (root / ".ai/agents/sample.yaml").write_text(yaml.safe_dump({"agent": agent()}), encoding="utf-8")
+            manifest = root / ".ai/adapters/generated-manifest.json"
+            manual = root / ".cursor/README.md"
+            manual.parent.mkdir(parents=True)
+            manual.write_text(generator.MARKER + "\nmanual readme\n", encoding="utf-8")
+            manifest.write_text(json.dumps({"version": 1, "files": {".cursor/README.md": "oldhash"}}), encoding="utf-8")
+            with patch.object(generator, "ROOT", root), patch.object(generator, "MANIFEST", manifest), patch.object(sys, "argv", ["generate_adapters.py", "--write"]), contextlib.redirect_stderr(io.StringIO()):
+                self.assertEqual(generator.main(), 2)
+            self.assertTrue(manual.exists())
+
+
 if __name__ == "__main__":
     unittest.main()
