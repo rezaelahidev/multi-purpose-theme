@@ -75,6 +75,15 @@ def main():
     try:
         cfg=read_yaml(ROOT/".ai/adapters/providers.yaml")
         if cfg.get("version")!="1.0" or set(cfg.get("providers",{}))!=PROVIDERS: raise ValueError("Invalid provider profile version or provider set")
+        for provider_id, profile in cfg["providers"].items():
+            status=profile.get("verification_status")
+            verified_on=profile.get("last_verified")
+            if status not in {"pending","verified"}: raise ValueError("Invalid verification status for "+provider_id)
+            if status=="verified" and (not isinstance(verified_on,str) or not re.fullmatch(r"\\d{4}-\\d{2}-\\d{2}",verified_on)):
+                raise ValueError("Verified provider profile requires ISO last_verified date: "+provider_id)
+            if status=="pending" and verified_on is not None: raise ValueError("Pending provider profile must not have last_verified date: "+provider_id)
+            if status!="verified" and "native" in profile.get("capabilities",{}).values():
+                raise ValueError("Native capability requires verified provider profile: "+provider_id)
         agents=[]; ids=set()
         for p in sorted((ROOT/".ai/agents").glob("*.yaml")):
             a=read_yaml(p).get("agent")
