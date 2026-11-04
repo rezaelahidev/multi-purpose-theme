@@ -55,7 +55,7 @@ agent:
       - "Block metadata, attributes, rendering, and editor behavior are tested."
       - "Output is accessible, secure, responsive, and compatible with target versions."
   handoff:
-    target: "block-development-agent"
+    target: "qa-agent"
     approval_required: true
   escalation:
     conditions:
