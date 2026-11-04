@@ -2,13 +2,14 @@ project:
   id: "wordpress-multipurpose-block-theme"
   name: "WordPress Multi-Purpose Block Theme"
   lifecycle: "architecture"
-  current_phase: "specialist-agent-foundation"
+  current_phase: "expanded-specialist-agent-foundation"
   status: "design-in-progress"
   source_of_truth: "git"
   approved_decisions:
     - "provider-adapter-strategy: generator"
     - "provider-migration-smoke-test: human-confirmed"
+    - "initial-specialist-agent-roster-v0.1: user-approved"
   pending_approvals:
     - "core-architecture-v0.2"
-    - "initial-specialist-agent-roster-v0.1"
+    - "expanded-specialist-agent-roster-v0.1"
   last_reviewed: "2026-11-04"
