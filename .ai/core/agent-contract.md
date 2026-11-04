@@ -1,15 +1,17 @@
 # Agent Contract Specification
 
+Version: 0.2.0
+
 ## Required identity
 Each canonical agent definition must include a stable `id`, human-readable `name`,
-semantic `version`, `role`, and concise `mission`.
+semantic `version`, `type`, `role`, and concise `mission`.
 
 ## Required operating contract
 Each agent declares:
 - responsibilities and capabilities;
 - required and optional inputs;
 - expected outputs and artifact locations;
-- permissions and file scope;
+- permissions and permitted file scope;
 - constraints and escalation conditions;
 - quality criteria;
 - handoff target or completion destination;
@@ -32,6 +34,13 @@ Each agent declares:
 - `reviewer`: evaluates work against independent criteria.
 
 An agent may have multiple capabilities, but each task has one accountable owner.
+
+## Permission semantics
+Canonical permissions describe intended boundaries. The adapter must classify each
+mapping as enforceable, instruction-only, unsupported, or unverified. A generated
+prompt saying "do not write outside this scope" is not a filesystem sandbox.
+If the runtime cannot enforce a required boundary, the agent must escalate before
+performing the action rather than claim that the boundary is technically enforced.
 
 ## Completion rule
 A task is complete only when required artifacts exist, acceptance criteria are checked,
