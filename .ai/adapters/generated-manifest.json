@@ -27,7 +27,7 @@
     ".claude/agents/performance-agent.md": "4d9cfef531216c70abc26f52dadc1439b3994a7cb9d2529e92892b671f33c460",
     ".claude/agents/security-agent.md": "3077041d7fd28697255f4d1f4103bf3545f400a5f73f8fd00342e7c0e6b2f245",
     ".claude/agents/template-engineer.md": "f881d4d8ef16a5eba5935c293b2c9cd25120787192ff7134ce08fba69ae23d7d",
-    ".claude/agents/ux-ui-architect.md": "88b6effeba4654e7a0faccf9a0576c6a7d4db95f12dbfe6b0fd06b5f8d6f777d",
+    ".claude/agents/ux-ui-architect.md": "8be512006d8d5422561c0e6c64773d66ae8b382379a0bcb2ec3bd13cbb580ee0",
     ".codex/agents/block-development-agent.toml": "f01d51875f018329d83d19c9d23714fca4b0e4937049cd86b1e07da232a21ccc",
     ".codex/agents/design-system-agent.toml": "9717bf56d28d8b60c9d16fc3fd3627b3513309b1a0a17008f94333b51bb57786",
     ".codex/agents/documentation-agent.toml": "18cd18322ea95eb235ef63942635ea22f3b01e2fba913445c2636b36307442f6",
@@ -43,6 +43,6 @@
     ".cursor/agents/performance-agent.md": "4d9cfef531216c70abc26f52dadc1439b3994a7cb9d2529e92892b671f33c460",
     ".cursor/agents/security-agent.md": "3077041d7fd28697255f4d1f4103bf3545f400a5f73f8fd00342e7c0e6b2f245",
     ".cursor/agents/template-engineer.md": "f881d4d8ef16a5eba5935c293b2c9cd25120787192ff7134ce08fba69ae23d7d",
-    ".cursor/agents/ux-ui-architect.md": "88b6effeba4654e7a0faccf9a0576c6a7d4db95f12dbfe6b0fd06b5f8d6f777d"
+    ".cursor/agents/ux-ui-architect.md": "8be512006d8d5422561c0e6c64773d66ae8b382379a0bcb2ec3bd13cbb580ee0"
   }
 }
