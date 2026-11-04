@@ -193,6 +193,31 @@ class GeneratorRenderTests(unittest.TestCase):
         self.assertEqual(codex_agent["description"], "Perform a bounded sample task.")
         self.assertIn("Canonical agent: sample-agent@1.0.0", codex_agent["developer_instructions"])
         self.assertIn(".codex/capability-report.md", output)
+        import yaml
+        for provider_path in [".cursor/agents/sample-agent.md", ".claude/agents/sample-agent.md"]:
+            frontmatter = output[provider_path].split("---", 2)[1]
+            metadata = yaml.safe_load(frontmatter)
+            self.assertEqual(metadata["name"], "sample-agent")
+            self.assertEqual(metadata["description"], "Perform a bounded sample task.")
+            self.assertIn("Canonical agent: sample-agent@1.0.0", output[provider_path])
+
+    def test_cursor_rule_frontmatter_is_valid(self):
+        import yaml
+        output = generator.render(profiles(), [agent()])
+        rule = output[".cursor/rules/ai-core.mdc"]
+        frontmatter = rule.split("---", 2)[1]
+        metadata = yaml.safe_load(frontmatter)
+        self.assertTrue(metadata["alwaysApply"])
+        self.assertEqual(metadata["description"], "Shared AI-native project governance")
+
+    def test_canonical_skill_has_standard_metadata(self):
+        import yaml
+        skill = ROOT / ".agents/skills/wordpress-block-theme/SKILL.md"
+        content = skill.read_text(encoding="utf-8")
+        frontmatter = content.split("---", 2)[1]
+        metadata = yaml.safe_load(frontmatter)
+        self.assertEqual(metadata["name"], "wordpress-block-theme")
+        self.assertTrue(metadata["description"])
 
     def test_codex_generated_path_is_allowed(self):
         with tempfile.TemporaryDirectory() as temp:
