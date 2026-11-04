@@ -54,7 +54,7 @@ agent:
       - "Navigation, interaction states, responsive behavior, and accessibility expectations are explicit."
       - "Design decisions and assumptions are traceable and reviewable."
   handoff:
-    target: "ux-ui-architect"
+    target: "design-system-agent"
     approval_required: true
   escalation:
     conditions:
