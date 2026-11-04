@@ -12,3 +12,4 @@
 10. **Adapter thinness:** runtime configuration translates; it does not own core logic.
 11. **No silent degradation:** unsupported runtime capabilities are disclosed.
 12. **Small, reviewable changes:** prefer bounded tasks and focused diffs.
+13. **No direct master commits:** all agent and automation writes use verified feature branches and PRs; direct master mutation is forbidden.
