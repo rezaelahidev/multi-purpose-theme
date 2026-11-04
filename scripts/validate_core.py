@@ -54,7 +54,7 @@ def main():
             workflow=read_yaml(path)["workflow"]
             if not workflow.get("id") or not isinstance(workflow.get("steps"),list): raise ValueError("workflow id/steps missing")
             for step in workflow["steps"]:
-                if step.get("owner") not in agents: raise ValueError("unknown workflow owner "+str(step.get("owner")))
+                if step.get("owner") not in agents and step.get("owner") != "human": raise ValueError("unknown workflow owner "+str(step.get("owner")) )
             print("PASS "+str(path.relative_to(ROOT)))
         except Exception as e: print("FAIL "+str(path.relative_to(ROOT))+": "+str(e)); ok=False
     return 0 if ok else 1
