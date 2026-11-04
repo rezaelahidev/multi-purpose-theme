@@ -35,7 +35,7 @@ def profiles(subagents="unverified", verified=False):
             "verification_status": "verified" if verified else "pending",
             "last_verified": "2026-11-04" if verified else None,
             "capabilities": {
-                "subagents": subagents if provider in {"cursor", "claude-code"} else "unverified",
+                "subagents": subagents if provider in {"cursor", "claude-code", "codex"} else "unverified",
                 "skills": "shared",
             },
             "documentation": ["https://example.org/docs"],
