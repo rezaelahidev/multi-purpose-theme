@@ -127,9 +127,9 @@ tasks:
       required: true
       status: "pending"
   - id: "TASK-UX-FOUNDATION-001"
-    title: "Draft UX architecture and user journeys for selected launch archetypes"
-    status: "IN_PROGRESS"
-    assigned_agent: "ux-ui-architect"
+    title: "Review and approve UX architecture and user journeys for selected launch archetypes"
+    status: "READY"
+    assigned_agent: "human"
     dependencies:
       - "TASK-AGENTS-002"
     inputs:
@@ -140,13 +140,15 @@ tasks:
     expected_outputs:
       - "Draft UX architecture for all selected launch archetypes"
       - "Draft site-owner and visitor journeys, including B2B cross-cutting requirements"
-      - "Decision log identifying unresolved audience, priority, customization, compatibility, and RTL inputs"
+      - "Decision log identifying unresolved audience, customization, compatibility, and RTL inputs"
+      - "Owner priority recorded: E-commerce first, Blog / Magazine second"
     acceptance_criteria:
       - "Owner-selected archetypes are reflected accurately: Business/Corporate, Agency/Portfolio, Blog/Magazine, SaaS/Product Landing, E-commerce, Education/LMS, Community/Membership"
       - "B2B is modeled as a cross-cutting context, not an additional visual archetype"
       - "Shared site-owner and visitor journeys are documented"
       - "Archetype-specific visitor journeys and theme/plugin responsibility boundaries are documented"
       - "Open product decisions and approval dependencies are explicit"
+      - "E-commerce is the primary launch archetype and Blog / Magazine is the second priority"
       - "No production theme implementation files are created or modified"
     file_scope:
       include:
