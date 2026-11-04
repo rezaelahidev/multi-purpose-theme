@@ -53,7 +53,7 @@ agent:
       - "Findings include reproducible evidence and severity."
       - "Recommendations consider tradeoffs and regression risk."
   handoff:
-    target: "performance-agent"
+    target: "master-orchestrator"
     approval_required: true
   escalation:
     conditions:
