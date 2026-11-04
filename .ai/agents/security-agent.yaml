@@ -53,7 +53,7 @@ agent:
       - "Review covers trust boundaries, input/output handling, permissions, and dependencies as applicable."
       - "Unverified risks are clearly labeled."
   handoff:
-    target: "security-agent"
+    target: "master-orchestrator"
     approval_required: true
   escalation:
     conditions:
