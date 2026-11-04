@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "files": {
+    ".claude/agents/master-orchestrator.md": "6fb0e6457b4cea9807c247ff0c8a66a1f73108a5e0a92328a781617eef503e1e",
+    ".claude/agents/research-agent.md": "b61814842890a50a73df6cbebbd44777e03f97c6421ee665e1674f3d970204ef",
+    ".claude/capability-report.md": "9ebcca52c0dd94381486ffaeb371aee49e76362e50f948bccf261e612f3a08cc",
+    ".codex/agents/master-orchestrator.toml": "0f3ccf209ce5cc6d821874819046384178f8048597d495f0e31a3a9f0f0c536a",
+    ".codex/agents/research-agent.toml": "bd8c5796dab228729b5d59c37e907123e46ac789e91ba0b589c03e7eb3ebfb79",
+    ".codex/capability-report.md": "c5a51b84402a9c206beeb4319004c64f098c7b81f9bc7b2e0db6c849dbcb3673",
+    ".cursor/agents/master-orchestrator.md": "6fb0e6457b4cea9807c247ff0c8a66a1f73108a5e0a92328a781617eef503e1e",
+    ".cursor/agents/research-agent.md": "b61814842890a50a73df6cbebbd44777e03f97c6421ee665e1674f3d970204ef",
+    ".cursor/capability-report.md": "58edb442c42494f5bffb70ba8138b80e2f3f2f96fbaea69ede49b3f5df9e9e08",
+    ".cursor/rules/ai-core.mdc": "190a91a5ca7f4607c54624e0a33d77a60bc2349bc204a6d59981ef0e0c70e267"
+  }
+}
