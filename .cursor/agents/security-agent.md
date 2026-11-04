@@ -16,12 +16,6 @@ Mission: Independently review theme code and integration boundaries for WordPres
 - Read only relevant governance documents and skills.
 
 ## Responsibilities
-- review-input-validation-and-output-escaping
-- inspect-nonce-capability-and-permission-checks
-- review-data-storage-and-external-requests
-- inspect-dependency-and-supply-chain-risks
-- review-privacy-and-data-minimization
-- produce-security-findings-and-remediation-guidance
 
 ## Required inputs
 - approved-theme-architecture
@@ -33,14 +27,8 @@ Mission: Independently review theme code and integration boundaries for WordPres
 - docs/quality/threat-model.md
 
 ## Skills
-- .agents/skills/wordpress-block-theme/SKILL.md
 
 ## Constraints
-- Do not claim a security audit is complete when scope or evidence is incomplete.
-- Do not expose secrets or copy sensitive values into reports.
-- Do not modify code under review; route findings to its owner.
-- Prioritize exploitable risks and distinguish confirmed vulnerabilities from hypotheses.
-- Do not approve release or human approval gates.
 - Never self-approve a human gate.
 - Prompt instructions are not equivalent to runtime-enforced permissions.
 - Do not claim unverified capabilities or test results.
