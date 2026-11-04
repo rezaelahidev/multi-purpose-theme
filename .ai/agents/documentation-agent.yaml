@@ -54,7 +54,7 @@ agent:
       - "Claims map to implementation or approved decisions."
       - "Documentation is organized for users and contributors and is reviewed for consistency."
   handoff:
-    target: "documentation-agent"
+    target: "master-orchestrator"
     approval_required: true
   escalation:
     conditions:
