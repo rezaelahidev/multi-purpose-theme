@@ -13,6 +13,8 @@ agent:
     - "define-style-variation-governance"
     - "document-component-and-pattern-visual-guidelines"
     - "maintain-design-system-change-log-and-compatibility"
+    - "define-bilingual-typography-and-direction-aware-token-guidance"
+    - "validate-fa-ir-rtl-ltr-and-mixed-direction-design-system-behavior"
   capabilities:
     - "design-tokens"
     - "theme-json-design"
@@ -48,12 +50,17 @@ agent:
     - "Do not silently change established tokens or style variation contracts."
     - "Coordinate theme.json ownership with Theme Architect and implementation owners."
     - "Do not implement templates, patterns, or custom blocks."
+    - "Design tokens and component guidance must support both international English/LTR and Iranian Persian/RTL use cases."
+    - "Specify licensed Persian font strategy, script fallbacks, line-height, numeral behavior, logical spacing/direction, and mixed-script handling; do not assume one font or hard-code RTL-only layouts."
+    - "Do not hard-code Iranian currency, calendar, payment, shipping, or legal assumptions into global tokens; use configurable semantic presentation and plugin-owned behavior."
   quality:
     criteria:
       - "Tokens have semantic names, documented values, and usage guidance."
       - "theme.json mapping is compatible with the approved WordPress target."
       - "Style variations and global styles remain coherent and accessible."
       - "Changes are versioned and migration impacts are documented."
+      - "The same design system remains coherent in Persian RTL, English LTR, and mixed-direction content."
+      - "Typography and layout pass localization, accessibility, and performance checks for both target audiences."
   handoff:
     target: "theme-architect"
     approval_required: true
