@@ -1,7 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/schemas/task.schema.json",
-  "title": "Task Record",
+  "$id": "urn:wordpress-theme-ai:task:1",
   "type": "object",
   "required": [
     "id",
@@ -12,6 +11,7 @@
     "inputs",
     "expected_outputs",
     "acceptance_criteria",
+    "file_scope",
     "approval"
   ],
   "additionalProperties": false,
@@ -64,12 +64,35 @@
         "type": "string"
       }
     },
+    "file_scope": {
+      "type": "object",
+      "required": [
+        "include",
+        "exclude"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "include": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "exclude": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "approval": {
       "type": "object",
       "required": [
         "required",
         "status"
       ],
+      "additionalProperties": false,
       "properties": {
         "required": {
           "type": "boolean"
