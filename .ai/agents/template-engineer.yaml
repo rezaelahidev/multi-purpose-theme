@@ -55,7 +55,7 @@ agent:
       - "Template hierarchy and template-part reuse are correct."
       - "Markup is valid, responsive, accessible, and visually consistent with the approved system."
   handoff:
-    target: "template-engineer"
+    target: "qa-agent"
     approval_required: true
   escalation:
     conditions:
