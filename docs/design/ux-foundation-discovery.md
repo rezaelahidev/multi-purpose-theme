@@ -149,18 +149,35 @@ The following deliverables are recommended for this phase:
 - Test RTL and translated/long content before finalizing layout and typography decisions.
 - Run WordPress theme validation and automated accessibility/performance checks once implementation exists.
 
-## 8. Decisions still required from the project owner
+## 8. Owner decisions and remaining inputs
 
-These decisions materially affect UX, information architecture, and the design-system baseline:
+### 8.1 Confirmed first-release site archetypes
 
-1. **Primary site archetypes:** which types of websites must the first release serve? Examples: business/corporate, agency/portfolio, blog/editorial, SaaS/product landing, ecommerce storefront, education, or community.
-2. **Priority:** which one or two archetypes are the primary launch targets, and which are secondary?
-3. **Audience:** is the primary site owner a beginner, a designer/agency, or a developer?
-4. **Customization philosophy:** should the theme provide a curated set of polished options, or expose extensive controls to advanced users?
-5. **Minimum WordPress version:** may the theme require WordPress 6.6+ and use `theme.json` v3, or is older-version compatibility required?
-6. **Language direction:** is RTL/Persian a first-class launch requirement alongside LTR, or a later compatibility milestone?
+The project owner selected all of the following for the first release:
 
-No token values, demo catalogue, visual identity, or custom-block requirements should be finalized until these answers and the upstream approval gates are recorded.
+1. Business / Corporate
+2. Agency / Portfolio
+3. Blog / Magazine
+4. SaaS / Product Landing
+5. E-commerce
+6. Education / LMS
+7. Community / Membership
+
+**B2B** is an additional cross-cutting business context, not a separate visual archetype. It should influence relevant information architecture and conversion journeys (for example, industry/use-case pages, integrations, trust/security information, case studies, demo requests and sales contact) across the selected archetypes.
+
+This decision establishes the target breadth. It does not yet establish equal implementation priority or guarantee native theme ownership of the functionality associated with each vertical.
+
+### 8.2 Decisions still required
+
+1. **Priority:** which one or two archetypes are the primary launch targets, and which are secondary?
+2. **Audience:** is the primary site owner a beginner, a designer/agency, or a developer?
+3. **Customization philosophy:** should the theme provide a curated set of polished options, balanced flexibility, or extensive controls for advanced users?
+4. **Minimum WordPress version:** may the theme require WordPress 6.6+ and use `theme.json` v3, or is older-version compatibility required?
+5. **Language direction:** is RTL/Persian a first-class launch requirement alongside LTR, or a later compatibility milestone?
+6. **Plugin compatibility:** which commerce, LMS, and community/membership plugins must be explicitly supported?
+7. **Starter-site delivery:** should the first release include importable starter sites/demo content, or only templates, patterns and style variations?
+
+These answers materially affect UX, compatibility, implementation scope and QA. Until they are decided, UX architecture and journeys may be prepared as reviewable drafts, but no final token values, visual identity, demo catalogue, plugin integrations or custom-block requirements should be approved.
 
 ## 9. Recommendation
 
