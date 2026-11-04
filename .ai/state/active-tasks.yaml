@@ -15,6 +15,150 @@ tasks:
       - "Four core specifications reviewed"
       - "Repository layout approved"
       - "Provider portability constraints understood"
+      - "Manual provider migration smoke test confirmed"
+    file_scope:
+      include:
+        - ".ai/core/**"
+        - ".ai/contracts/**"
+        - ".ai/adapters/**"
+        - "scripts/**"
+        - "tests/**"
+        - ".cursor/**"
+        - ".claude/**"
+        - ".codex/**"
+        - "docs/architecture/**"
+        - "README.md"
+        - "requirements-dev.txt"
+      exclude:
+        - ".ai/state/**"
+        - "docs/decisions/**"
+    approval:
+      required: true
+      status: "pending"
+  - id: "TASK-AGENTS-001"
+    title: "Define and validate the initial WordPress Block Theme agent roster"
+    status: "APPROVED"
+    assigned_agent: "master-orchestrator"
+    dependencies: []
+    inputs:
+      - ".ai/contracts/agent.schema.json"
+      - ".ai/core/agent-contract.md"
+      - ".ai/core/provider-adapter-spec.md"
+      - ".agents/skills/wordpress-block-theme/SKILL.md"
+    expected_outputs:
+      - ".ai/agents/product-architect.yaml"
+      - ".ai/agents/theme-architect.yaml"
+      - ".ai/agents/qa-agent.yaml"
+      - "docs/architecture/specialist-agent-roster.md"
+      - ".ai/adapters/generated-manifest.json"
+    acceptance_criteria:
+      - "Each canonical agent validates against the agent JSON Schema"
+      - "Each role has bounded responsibilities, inputs, outputs, permissions, and escalation rules"
+      - "Product, architecture, and QA responsibilities are independently assigned"
+      - "Human approval gates are preserved"
+      - "All provider adapters and the generated manifest are synchronized"
+      - "GitHub Actions validation passes on the resulting commit"
+    file_scope:
+      include:
+        - ".ai/agents/**"
+        - ".ai/state/active-tasks.yaml"
+        - ".ai/state/project-status.yaml"
+        - ".ai/adapters/generated-manifest.json"
+        - ".cursor/agents/**"
+        - ".claude/agents/**"
+        - ".codex/agents/**"
+        - "docs/architecture/specialist-agent-roster.md"
+      exclude:
+        - "style.css"
+        - "templates/**"
+        - "parts/**"
+        - "patterns/**"
+        - "theme.json"
+    approval:
+      required: true
+      status: "approved"
+  - id: "TASK-AGENTS-002"
+    title: "Define and validate the expanded WordPress Block Theme specialist roster"
+    status: "IN_PROGRESS"
+    assigned_agent: "master-orchestrator"
+    dependencies:
+      - "TASK-AGENTS-001"
+    inputs:
+      - ".ai/contracts/agent.schema.json"
+      - ".ai/core/agent-contract.md"
+      - ".ai/core/provider-adapter-spec.md"
+      - ".agents/skills/wordpress-block-theme/SKILL.md"
+      - "docs/architecture/specialist-agent-roster.md"
+    expected_outputs:
+      - ".ai/agents/ux-ui-architect.yaml"
+      - ".ai/agents/design-system-agent.yaml"
+      - ".ai/agents/block-development-agent.yaml"
+      - ".ai/agents/template-engineer.yaml"
+      - ".ai/agents/pattern-engineer.yaml"
+      - ".ai/agents/performance-agent.yaml"
+      - ".ai/agents/security-agent.yaml"
+      - ".ai/agents/documentation-agent.yaml"
+      - "docs/architecture/specialist-agent-roster.md"
+      - ".ai/adapters/generated-manifest.json"
+    acceptance_criteria:
+      - "Every specialist contract validates against the Agent JSON Schema"
+      - "Agent ownership and file scopes are explicit and non-conflicting"
+      - "Implementation agents require all relevant human approval gates"
+      - "Reviewer agents remain independent from implementation owners"
+      - "All Cursor, Claude Code, and Codex adapters are generated and synchronized"
+      - "GitHub Actions validation passes on the resulting commit"
+    file_scope:
+      include:
+        - ".ai/agents/**"
+        - ".ai/state/active-tasks.yaml"
+        - ".ai/state/project-status.yaml"
+        - ".ai/adapters/generated-manifest.json"
+        - ".cursor/agents/**"
+        - ".claude/agents/**"
+        - ".codex/agents/**"
+        - "docs/architecture/**"
+      exclude:
+        - "style.css"
+        - "templates/**"
+        - "parts/**"
+        - "patterns/**"
+        - "theme.json"
+    approval:
+      required: true
+      status: "pending"
+  - id: "TASK-UX-FOUNDATION-001"
+    title: "Draft UX architecture and user journeys for selected launch archetypes"
+    status: "IN_PROGRESS"
+    assigned_agent: "ux-ui-architect"
+    dependencies:
+      - "TASK-AGENTS-002"
+    inputs:
+      - "docs/design/ux-foundation-discovery.md"
+      - "docs/design/ux-architecture.md"
+      - "docs/design/user-journeys.md"
+      - ".ai/core/quality-gates.md"
+    expected_outputs:
+      - "Draft UX architecture for all selected launch archetypes"
+      - "Draft site-owner and visitor journeys, including B2B cross-cutting requirements"
+      - "Decision log identifying unresolved audience, priority, customization, compatibility, and RTL inputs"
+    acceptance_criteria:
+      - "Owner-selected archetypes are reflected accurately: Business/Corporate, Agency/Portfolio, Blog/Magazine, SaaS/Product Landing, E-commerce, Education/LMS, Community/Membership"
+      - "B2B is modeled as a cross-cutting context, not an additional visual archetype"
+      - "Shared site-owner and visitor journeys are documented"
+      - "Archetype-specific visitor journeys and theme/plugin responsibility boundaries are documented"
+      - "Open product decisions and approval dependencies are explicit"
+      - "No production theme implementation files are created or modified"
+    file_scope:
+      include:
+        - "docs/requirements/**"
+        - "docs/design/**"
+        - ".ai/state/**"
+      exclude:
+        - "theme.json"
+        - "templates/**"
+        - "parts/**"
+        - "patterns/**"
+        - "blocks/**"
     approval:
       required: true
       status: "pending"

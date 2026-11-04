@@ -1,0 +1,44 @@
+version: "1.0"
+providers:
+  cursor:
+    display_name: "Cursor"
+    verification_status: "verified"
+    last_verified: "2026-11-04"
+    capabilities:
+      repository_instructions: "shared"
+      subagents: "native"
+      skills: "native"
+      tool_configuration: "unverified"
+      permission_enforcement: "unverified"
+      delegation: "native"
+    documentation:
+      - "https://cursor.com/docs/context/rules"
+      - "https://cursor.com/docs/subagents"
+  claude-code:
+    display_name: "Claude Code"
+    verification_status: "verified"
+    last_verified: "2026-11-04"
+    capabilities:
+      repository_instructions: "shared"
+      subagents: "native"
+      skills: "unverified"
+      tool_configuration: "unverified"
+      permission_enforcement: "unverified"
+      delegation: "native"
+    documentation:
+      - "https://code.claude.com/docs/en/sub-agents"
+      - "https://code.claude.com/docs/en/skills"
+  codex:
+    display_name: "OpenAI Codex"
+    verification_status: "verified"
+    last_verified: "2026-11-04"
+    capabilities:
+      repository_instructions: "shared"
+      subagents: "native"
+      skills: "native"
+      tool_configuration: "unverified"
+      permission_enforcement: "unverified"
+      delegation: "native"
+    documentation:
+      - "https://developers.openai.com/codex/subagents"
+      - "https://developers.openai.com/codex/skills/"

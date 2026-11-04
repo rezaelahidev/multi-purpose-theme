@@ -13,7 +13,7 @@ workflow:
         - "docs/reports/research-report.md"
       next: "product-definition"
     - id: "product-definition"
-      owner: "product-architect"
+      owner: "human"
       inputs:
         - "docs/reports/research-report.md"
       outputs:

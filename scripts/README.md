@@ -1,15 +1,9 @@
-# Scripts
+# Core tooling
 
-## validate_core.py
-Validates canonical agent YAML and task records against the JSON Schemas.
-Run from any directory with:
+Validate canonical records with `python scripts/validate_core.py`.
 
-```bash
-python scripts/validate_core.py
-```
+Generate provider adapters with `python scripts/generate_adapters.py --write`.
 
-## Adapter generation
-Provider adapter generation is intentionally not enabled in v0.1. Before implementing
-it, verify the current official schemas for Cursor, Claude Code, and Codex. Generation
-must be deterministic, mark generated files, preserve canonical IDs, and fail when a
-required capability cannot be represented safely.
+Check generated-file drift without modifying files with `python scripts/generate_adapters.py --check`.
+
+The generator refuses to overwrite non-generated files and removes stale files only when recorded in the previous generated manifest.
