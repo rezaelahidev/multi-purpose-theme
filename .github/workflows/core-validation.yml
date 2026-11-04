@@ -75,6 +75,10 @@ jobs:
         run: python -m pip install -r requirements-dev.txt
       - name: Compile generator
         run: python -m py_compile scripts/generate_adapters.py
+      - name: Regenerate adapters and expose manifest for repair
+        run: |
+          python scripts/generate_adapters.py --write
+          cat .ai/adapters/generated-manifest.json
       - name: Verify committed provider adapters are synchronized
         run: python scripts/generate_adapters.py --check
       - name: Regenerate provider adapters
