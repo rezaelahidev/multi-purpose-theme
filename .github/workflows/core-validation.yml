@@ -75,9 +75,11 @@ jobs:
         run: python -m pip install -r requirements-dev.txt
       - name: Compile generator
         run: python -m py_compile scripts/generate_adapters.py
-      - name: Generate provider adapters
+      - name: Verify committed provider adapters are synchronized
+        run: python scripts/generate_adapters.py --check
+      - name: Regenerate provider adapters
         run: python scripts/generate_adapters.py --write
-      - name: Verify generated manifest and files
+      - name: Verify generated manifest and files after regeneration
         run: python scripts/generate_adapters.py --check
       - name: Verify deterministic generation
         shell: bash
