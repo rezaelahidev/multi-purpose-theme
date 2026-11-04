@@ -1,7 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/schemas/agent.schema.json",
-  "title": "Canonical Agent Definition",
+  "$id": "urn:wordpress-theme-ai:agent:1",
   "type": "object",
   "required": [
     "contract_version",
@@ -10,7 +9,7 @@
   "additionalProperties": false,
   "properties": {
     "contract_version": {
-      "type": "string"
+      "const": "1.0"
     },
     "agent": {
       "type": "object",
@@ -78,6 +77,7 @@
           "required": [
             "required"
           ],
+          "additionalProperties": false,
           "properties": {
             "required": {
               "type": "array",
@@ -91,14 +91,14 @@
                 "type": "string"
               }
             }
-          },
-          "additionalProperties": false
+          }
         },
         "outputs": {
           "type": "object",
           "required": [
             "required"
           ],
+          "additionalProperties": false,
           "properties": {
             "required": {
               "type": "array",
@@ -106,11 +106,64 @@
                 "type": "string"
               }
             }
-          },
-          "additionalProperties": false
+          }
         },
         "permissions": {
-          "type": "object"
+          "type": "object",
+          "required": [
+            "filesystem",
+            "web",
+            "terminal"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "filesystem": {
+              "type": "object",
+              "required": [
+                "read",
+                "write"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "read": {
+                  "type": "boolean"
+                },
+                "write": {
+                  "enum": [
+                    "none",
+                    "declared-output-paths-only",
+                    "declared-state-files-only",
+                    "task-file-scope-only",
+                    "unrestricted"
+                  ]
+                }
+              }
+            },
+            "web": {
+              "type": "object",
+              "required": [
+                "access"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "access": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "terminal": {
+              "type": "object",
+              "required": [
+                "access"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "access": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
         },
         "constraints": {
           "type": "array",
@@ -119,13 +172,46 @@
           }
         },
         "quality": {
-          "type": "object"
+          "type": "object",
+          "required": [
+            "criteria"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "criteria": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
         },
         "handoff": {
-          "type": "object"
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "target": {
+              "type": "string"
+            },
+            "approval_required": {
+              "type": "boolean"
+            }
+          }
         },
         "escalation": {
-          "type": "object"
+          "type": "object",
+          "required": [
+            "conditions"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "conditions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
         }
       }
     }
