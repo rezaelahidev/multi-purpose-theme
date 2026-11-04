@@ -27,8 +27,7 @@ python scripts/generate_adapters.py --check
 
 - `--write` creates or updates generated outputs and removes stale outputs only when
   they are listed in the previous generated manifest.
-- `--check` is read-only and exits non-zero for missing, modified, stale, or
-  unexpected generator-owned files.
+- `--check` is read-only and exits non-zero for missing, modified, or stale generated files.
 - Running `--write` repeatedly with unchanged inputs must produce no content changes.
 - The manifest is written to `.ai/adapters/generated-manifest.json`.
 - Every generated artifact starts with a generated-file warning and a stable marker.
