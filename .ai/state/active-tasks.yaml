@@ -142,6 +142,9 @@ tasks:
       - "Draft site-owner and visitor journeys, including B2B cross-cutting requirements"
       - "Decision log identifying unresolved audience, customization, compatibility, and RTL inputs"
       - "Owner priority recorded: E-commerce first, Blog / Magazine second"
+      - "International and Iranian users are first-class audiences across all seven archetypes"
+      - "Persian (fa-IR), RTL/LTR, mixed-script content, localized formats, and Iran-specific plugin/service assumptions are specified"
+      - "Iran-specific legal, payment, and regulatory claims are not assumed without current validation"
     acceptance_criteria:
       - "Owner-selected archetypes are reflected accurately: Business/Corporate, Agency/Portfolio, Blog/Magazine, SaaS/Product Landing, E-commerce, Education/LMS, Community/Membership"
       - "B2B is modeled as a cross-cutting context, not an additional visual archetype"
@@ -149,6 +152,8 @@ tasks:
       - "Archetype-specific visitor journeys and theme/plugin responsibility boundaries are documented"
       - "Open product decisions and approval dependencies are explicit"
       - "E-commerce is the primary launch archetype and Blog / Magazine is the second priority"
+      - "Every archetype has equivalent English/LTR and Persian/RTL journey coverage"
+      - "Iranian localization requirements are cross-cutting and are reflected in UX, design-system, skill, and QA agent contracts"
       - "No production theme implementation files are created or modified"
     file_scope:
       include:
