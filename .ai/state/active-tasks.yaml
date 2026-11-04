@@ -15,6 +15,7 @@ tasks:
       - "Four core specifications reviewed"
       - "Repository layout approved"
       - "Provider portability constraints understood"
+      - "Manual provider migration smoke test confirmed"
     file_scope:
       include:
         - ".ai/core/**"
@@ -31,6 +32,48 @@ tasks:
       exclude:
         - ".ai/state/**"
         - "docs/decisions/**"
+    approval:
+      required: true
+      status: "pending"
+  - id: "TASK-AGENTS-001"
+    title: "Define and validate the initial WordPress Block Theme agent roster"
+    status: "IN_PROGRESS"
+    assigned_agent: "master-orchestrator"
+    dependencies: []
+    inputs:
+      - ".ai/contracts/agent.schema.json"
+      - ".ai/core/agent-contract.md"
+      - ".ai/core/provider-adapter-spec.md"
+      - ".agents/skills/wordpress-block-theme/SKILL.md"
+    expected_outputs:
+      - ".ai/agents/product-architect.yaml"
+      - ".ai/agents/theme-architect.yaml"
+      - ".ai/agents/qa-agent.yaml"
+      - "docs/architecture/specialist-agent-roster.md"
+      - ".ai/adapters/generated-manifest.json"
+    acceptance_criteria:
+      - "Each canonical agent validates against the agent JSON Schema"
+      - "Each role has bounded responsibilities, inputs, outputs, permissions, and escalation rules"
+      - "Product, architecture, and QA responsibilities are independently assigned"
+      - "Human approval gates are preserved"
+      - "All provider adapters and the generated manifest are synchronized"
+      - "GitHub Actions validation passes on the resulting commit"
+    file_scope:
+      include:
+        - ".ai/agents/**"
+        - ".ai/state/active-tasks.yaml"
+        - ".ai/state/project-status.yaml"
+        - ".ai/adapters/generated-manifest.json"
+        - ".cursor/agents/**"
+        - ".claude/agents/**"
+        - ".codex/agents/**"
+        - "docs/architecture/specialist-agent-roster.md"
+      exclude:
+        - "style.css"
+        - "templates/**"
+        - "parts/**"
+        - "patterns/**"
+        - "theme.json"
     approval:
       required: true
       status: "pending"
