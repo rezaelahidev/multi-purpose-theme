@@ -7,7 +7,7 @@ providers:
     capabilities:
       repository_instructions: "shared"
       subagents: "native"
-      skills: "shared"
+      skills: "native"
       tool_configuration: "unverified"
       permission_enforcement: "unverified"
       delegation: "native"
@@ -35,7 +35,7 @@ providers:
     capabilities:
       repository_instructions: "shared"
       subagents: "native"
-      skills: "shared"
+      skills: "unsupported"
       tool_configuration: "unverified"
       permission_enforcement: "unverified"
       delegation: "native"
