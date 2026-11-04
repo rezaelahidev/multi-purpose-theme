@@ -37,7 +37,7 @@ tasks:
       status: "pending"
   - id: "TASK-AGENTS-001"
     title: "Define and validate the initial WordPress Block Theme agent roster"
-    status: "IN_PROGRESS"
+    status: "REVIEW"
     assigned_agent: "master-orchestrator"
     dependencies: []
     inputs:
