@@ -16,11 +16,11 @@ providers:
     display_name: "Claude Code"
     capabilities:
       repository_instructions: "shared"
-      subagents: "native"
+      subagents: "unverified"
       skills: "unverified"
       tool_configuration: "unverified"
       permission_enforcement: "unverified"
-      delegation: "native"
+      delegation: "unverified"
     documentation:
       - "https://docs.anthropic.com/en/docs/claude-code/sub-agents"
       - "https://docs.anthropic.com/en/docs/claude-code/settings"
