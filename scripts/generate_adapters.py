@@ -48,11 +48,19 @@ def render(profiles,agents):
         if any(v not in CAPS for v in caps.values()): raise ValueError("Invalid capability in "+provider)
         if provider=="cursor":
             out[".cursor/rules/ai-core.mdc"]=MARKER+"\n---\ndescription: Shared AI-native project governance\nalwaysApply: true\n---\nFollow AGENTS.md. Canonical contracts, workflows, state, and skills live in .ai/ and .agents/skills/. Do not edit generated files. Respect human approval gates and task file scope.\n"
-            for a in agents:
-                out[".cursor/agents/"+a["id"]+".md"]=MARKER+"\n"+frontmatter({"name":a["id"],"description":a["mission"]})+"\n\n"+body(a)
+            if caps.get("subagents") == "native":
+                for a in agents:
+                    out[".cursor/agents/"+a["id"]+".md"]=MARKER+"\n"+frontmatter({"name":a["id"],"description":a["mission"]})+"\n\n"+body(a)
+            else:
+                docs="\n".join("- "+u for u in profile.get("documentation",[]))
+                out[".cursor/capability-report.md"]=MARKER+"\n# Cursor capability report\n\nSubagent generation is disabled until this capability is verified as native.\n\n## Capability mapping\n"+"\n".join("- "+k+": "+v for k,v in sorted(caps.items()))+"\n\n## Official references\n"+docs+"\n"
         elif provider=="claude-code":
-            for a in agents:
-                out[".claude/agents/"+a["id"]+".md"]=MARKER+"\n"+frontmatter({"name":a["id"],"description":a["mission"]})+"\n\n"+body(a)
+            if caps.get("subagents") == "native":
+                for a in agents:
+                    out[".claude/agents/"+a["id"]+".md"]=MARKER+"\n"+frontmatter({"name":a["id"],"description":a["mission"]})+"\n\n"+body(a)
+            else:
+                docs="\n".join("- "+u for u in profile.get("documentation",[]))
+                out[".claude/capability-report.md"]=MARKER+"\n# Claude Code capability report\n\nSubagent generation is disabled until this capability is verified as native.\n\n## Capability mapping\n"+"\n".join("- "+k+": "+v for k,v in sorted(caps.items()))+"\n\n## Official references\n"+docs+"\n"
         else:
             lines=["- **"+k.replace("_"," ")+"**: "+v for k,v in sorted(caps.items())]
             docs="\n".join("- "+u for u in profile.get("documentation",[]))
