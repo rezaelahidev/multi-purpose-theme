@@ -1,0 +1,21 @@
+workflow:
+  id: "product-discovery"
+  version: "0.1.0"
+  title: "Product Discovery"
+  description: "Move from an approved research scope to a reviewed product brief."
+  approval_gates:
+    - "research-scope"
+    - "product-brief"
+  steps:
+    - id: "research"
+      owner: "research-agent"
+      outputs:
+        - "docs/reports/research-report.md"
+      next: "product-definition"
+    - id: "product-definition"
+      owner: "product-architect"
+      inputs:
+        - "docs/reports/research-report.md"
+      outputs:
+        - "docs/requirements/product-brief.md"
+      requires_human_approval: true

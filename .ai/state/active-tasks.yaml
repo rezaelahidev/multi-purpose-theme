@@ -1,0 +1,20 @@
+tasks:
+  - id: "TASK-CORE-001"
+    title: "Review and approve portable AI core architecture"
+    status: "READY"
+    assigned_agent: "human"
+    dependencies: []
+    inputs:
+      - ".ai/core/architecture.md"
+      - ".ai/core/agent-contract.md"
+      - ".ai/core/workflow-state.md"
+      - ".ai/core/provider-adapter-spec.md"
+    expected_outputs:
+      - "docs/decisions/ADR-0001-portable-ai-core.md"
+    acceptance_criteria:
+      - "Four core specifications reviewed"
+      - "Repository layout approved"
+      - "Provider portability constraints understood"
+    approval:
+      required: true
+      status: "pending"

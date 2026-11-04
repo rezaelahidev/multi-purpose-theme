@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/agent.schema.json",
+  "title": "Canonical Agent Definition",
+  "type": "object",
+  "required": [
+    "contract_version",
+    "agent"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "type": "string"
+    },
+    "agent": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "version",
+        "type",
+        "role",
+        "mission",
+        "responsibilities",
+        "inputs",
+        "outputs",
+        "permissions",
+        "quality",
+        "handoff",
+        "escalation"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "coordinator",
+            "specialist",
+            "reviewer"
+          ]
+        },
+        "role": {
+          "type": "string"
+        },
+        "mission": {
+          "type": "string"
+        },
+        "responsibilities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "inputs": {
+          "type": "object",
+          "required": [
+            "required"
+          ],
+          "properties": {
+            "required": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "optional": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "outputs": {
+          "type": "object",
+          "required": [
+            "required"
+          ],
+          "properties": {
+            "required": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "permissions": {
+          "type": "object"
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "quality": {
+          "type": "object"
+        },
+        "handoff": {
+          "type": "object"
+        },
+        "escalation": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

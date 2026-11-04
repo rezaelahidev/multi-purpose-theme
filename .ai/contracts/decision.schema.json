@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/decision.schema.json",
+  "title": "Architecture Decision Record Metadata",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "status",
+    "date",
+    "decision_makers"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^ADR-[0-9]{4}$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "proposed",
+        "accepted",
+        "rejected",
+        "superseded",
+        "deprecated"
+      ]
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "decision_makers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,1 @@
+Adapters translate canonical definitions to runtime-specific conventions. Before generating provider files, verify current official provider schemas and supported capabilities. Do not assume feature parity.
