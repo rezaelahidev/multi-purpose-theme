@@ -30,8 +30,8 @@ authoritative home of agent intent, permissions, workflow logic, or project know
   byte-identical outputs.
 - Every generated file contains a machine-readable ownership marker.
 - A generated manifest records each output path and SHA-256 digest.
-- Check mode detects missing, modified, stale, and unexpected generated files without
-  changing the working tree.
+- Check mode detects missing, modified, and stale generated files without changing
+  the working tree.
 - Write mode may replace or remove only files previously declared as generator-owned.
 - Hand-edited generated output is drift, not a source of truth. Edit canonical inputs
   and regenerate.
