@@ -60,10 +60,12 @@ the active task before acting. Native tool allowlists or permission modes are no
 inferred from the generic permission object in v0.2.
 
 ### OpenAI Codex
-Codex uses repository-level `AGENTS.md` instructions and the portable
-`.agents/skills/` convention. The adapter generator does not create fictitious
-Codex-native agent definitions. It generates:
-- `.codex/capability-report.md` describing supported and unverified mappings. Existing `.codex/README.md` remains hand-maintained.
+Codex uses repository-level `AGENTS.md` instructions and supports project-scoped
+custom agents as standalone TOML files under `.codex/agents/`. Generate:
+- `.codex/agents/{agent-id}.toml` with required `name`, `description`, and
+  `developer_instructions` fields.
+- `.codex/capability-report.md` describing supported and unverified mappings.
+Existing `.codex/README.md` remains hand-maintained.
 
 The root `AGENTS.md` remains human-maintained and authoritative as shared repository
 guidance. It is not overwritten by the generator.
