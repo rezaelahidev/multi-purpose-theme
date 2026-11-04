@@ -15,9 +15,25 @@ def read_yaml(path):
     return data
 
 def safe_path(relative):
+    if not isinstance(relative, str) or not relative: raise ValueError("Generated path must be a non-empty string")
     p=Path(relative)
-    if p.is_absolute() or ".." in p.parts: raise ValueError("Unsafe path: "+relative)
-    resolved=(ROOT/p).resolve()
+    if p.is_absolute() or ".." in p.parts or not p.parts or p.parts[0] not in {".cursor", ".claude", ".codex"}:
+        raise ValueError("Unsafe generated path: "+relative)
+    allowed = (
+        (p.parts == (".cursor", "rules", "ai-core.mdc")) or
+        (p.parts == (".cursor", "capability-report.md")) or
+        (p.parts == (".claude", "capability-report.md")) or
+        (p.parts == (".codex", "capability-report.md")) or
+        (len(p.parts) == 3 and p.parts[0] == ".cursor" and p.parts[1] == "agents" and p.suffix == ".md") or
+        (len(p.parts) == 3 and p.parts[0] == ".claude" and p.parts[1] == "agents" and p.suffix == ".md")
+    )
+    if not allowed: raise ValueError("Path is not an approved generated output: "+relative)
+    candidate = ROOT / p
+    current = candidate
+    while current != ROOT:
+        if current.is_symlink(): raise ValueError("Refusing to follow symlink in generated path: "+relative)
+        current = current.parent
+    resolved = candidate.resolve()
     if ROOT.resolve() not in resolved.parents: raise ValueError("Path escapes repository: "+relative)
     return resolved
 
