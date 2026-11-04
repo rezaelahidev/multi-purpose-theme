@@ -1,6 +1,6 @@
 # User Journeys — Multi-Purpose Block Theme
 
-- Status: Draft proposal — not approved for implementation
+- Status: Draft proposal — priority archetypes selected; implementation not approved
 - Version: 0.1.0
 - Date: 2026-11-05
 - Owner: UX/UI Architect
@@ -19,6 +19,8 @@ This document maps the main site-owner and visitor journeys implied by the selec
 - Education / LMS
 - Community / Membership
 - B2B as a cross-cutting context
+
+**Owner-selected priority:** E-commerce is the primary launch archetype; Blog / Magazine is the second priority. The other selected archetypes remain in the first-release scope, and B2B remains cross-cutting.
 
 These journeys are hypotheses for product and UX review, not findings from user research. They describe how a site owner may compose and maintain a site using native WordPress capabilities, and how a visitor may complete the site's primary task.
 
@@ -269,7 +271,7 @@ Every journey must satisfy these baseline checks before release:
 
 ## 8. Prioritization proposal
 
-Because all seven archetypes are in the first-release target set, prioritize shared capabilities first, then validate archetype-specific needs in vertical slices.
+All seven archetypes remain in the first-release target set. The product owner selected E-commerce as the primary launch archetype and Blog / Magazine as the second priority. Prioritize shared foundations first, then validate these two journeys in depth before extending the same system to the remaining archetypes.
 
 **Foundation (shared across all archetypes)**
 - Global navigation/header/footer behavior.
@@ -279,10 +281,11 @@ Because all seven archetypes are in the first-release target set, prioritize sha
 - Editor/front-end parity.
 - Style variation switching and persistence behavior.
 
-**Archetype composition**
-- Business/Agency/SaaS/B2B: hero, value proposition, proof, services/features, CTA, contact/demo.
-- Blog/Magazine: editorial index, archive, single post, author/related content.
-- E-commerce: commerce plugin compatibility and product/shop presentation.
+**Archetype composition — priority order**
+1. **E-commerce (primary):** shop/catalog discovery, category and product presentation, cart/checkout visual compatibility, product states, account surfaces, responsive and accessible purchase journey. Commerce operations remain plugin-owned.
+2. **Blog / Magazine (second):** editorial home/index, archive/category, single article, author, search, related content, reading experience, and subscription CTA presentation.
+3. **Business / Agency / SaaS / B2B:** hero, value proposition, proof, services/features, CTA, contact/demo.
+4. **Education / LMS and Community / Membership:** course discovery and membership/community presentation, subject to selected plugin compatibility.
 - Education/LMS: course discovery and LMS presentation compatibility.
 - Community/Membership: benefits, membership information and plugin presentation compatibility.
 
@@ -290,7 +293,7 @@ This ordering is a planning recommendation, not a final MVP commitment. The owne
 
 ## 9. Open decisions
 
-1. Which one or two archetypes are the primary launch targets, despite all seven being in scope?
+1. **Resolved:** E-commerce is the primary launch archetype; Blog / Magazine is second. The remaining archetypes stay in first-release scope.
 2. Who is the primary site creator: beginner site owner, designer/agency, or developer?
 3. Is customization philosophy curated, balanced, or highly advanced?
 4. What is the minimum supported WordPress version?
