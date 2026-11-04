@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Deterministic provider adapter generator."""
-import argparse, hashlib, json, re, sys
+import argparse, datetime, hashlib, json, re, sys
 from pathlib import Path
 import yaml
 ROOT=Path(__file__).resolve().parents[1]
@@ -25,7 +25,8 @@ def safe_path(relative):
         (p.parts == (".claude", "capability-report.md")) or
         (p.parts == (".codex", "capability-report.md")) or
         (len(p.parts) == 3 and p.parts[0] == ".cursor" and p.parts[1] == "agents" and p.suffix == ".md") or
-        (len(p.parts) == 3 and p.parts[0] == ".claude" and p.parts[1] == "agents" and p.suffix == ".md")
+        (len(p.parts) == 3 and p.parts[0] == ".claude" and p.parts[1] == "agents" and p.suffix == ".md") or
+        (len(p.parts) == 3 and p.parts[0] == ".codex" and p.parts[1] == "agents" and p.suffix == ".toml")
     )
     if not allowed: raise ValueError("Path is not an approved generated output: "+relative)
     candidate = ROOT / p
@@ -62,25 +63,25 @@ def render(profiles,agents):
         if provider not in PROVIDERS: raise ValueError("Unknown provider: "+provider)
         profile=profiles[provider]; caps=profile.get("capabilities",{})
         if any(v not in CAPS for v in caps.values()): raise ValueError("Invalid capability in "+provider)
+        docs="\n".join("- "+u for u in profile.get("documentation",[]))
+        capability_lines="\n".join("- "+k.replace("_"," ")+": "+v for k,v in sorted(caps.items()))
         if provider=="cursor":
             out[".cursor/rules/ai-core.mdc"]=MARKER+"\n---\ndescription: Shared AI-native project governance\nalwaysApply: true\n---\nFollow AGENTS.md. Canonical contracts, workflows, state, and skills live in .ai/ and .agents/skills/. Do not edit generated files. Respect human approval gates and task file scope.\n"
             if caps.get("subagents") == "native":
                 for a in agents:
                     out[".cursor/agents/"+a["id"]+".md"]=MARKER+"\n"+frontmatter({"name":a["id"],"description":a["mission"]})+"\n\n"+body(a)
-            else:
-                docs="\n".join("- "+u for u in profile.get("documentation",[]))
-                out[".cursor/capability-report.md"]=MARKER+"\n# Cursor capability report\n\nSubagent generation is disabled until this capability is verified as native.\n\n## Capability mapping\n"+"\n".join("- "+k+": "+v for k,v in sorted(caps.items()))+"\n\n## Official references\n"+docs+"\n"
+            out[".cursor/capability-report.md"]=MARKER+"\n# Cursor capability report\n\n## Capability mapping\n"+capability_lines+"\n\n## Official references\n"+docs+"\n"
         elif provider=="claude-code":
             if caps.get("subagents") == "native":
                 for a in agents:
                     out[".claude/agents/"+a["id"]+".md"]=MARKER+"\n"+frontmatter({"name":a["id"],"description":a["mission"]})+"\n\n"+body(a)
-            else:
-                docs="\n".join("- "+u for u in profile.get("documentation",[]))
-                out[".claude/capability-report.md"]=MARKER+"\n# Claude Code capability report\n\nSubagent generation is disabled until this capability is verified as native.\n\n## Capability mapping\n"+"\n".join("- "+k+": "+v for k,v in sorted(caps.items()))+"\n\n## Official references\n"+docs+"\n"
+            out[".claude/capability-report.md"]=MARKER+"\n# Claude Code capability report\n\n## Capability mapping\n"+capability_lines+"\n\n## Official references\n"+docs+"\n"
         else:
-            lines=["- **"+k.replace("_"," ")+"**: "+v for k,v in sorted(caps.items())]
-            docs="\n".join("- "+u for u in profile.get("documentation",[]))
-            out[".codex/capability-report.md"]=MARKER+"\n# Codex capability report\n\n## Capability mapping\n"+"\n".join(lines)+"\n\n## Official references\n"+docs+"\n"
+            if caps.get("subagents") == "native":
+                for a in agents:
+                    instructions=body(a)
+                    out[".codex/agents/"+a["id"]+".toml"]=MARKER+"\nname = "+json.dumps(a["id"],ensure_ascii=False)+"\ndescription = "+json.dumps(a["mission"],ensure_ascii=False)+"\ndeveloper_instructions = "+json.dumps(instructions,ensure_ascii=False)+"\n"
+            out[".codex/capability-report.md"]=MARKER+"\n# Codex capability report\n\n## Capability mapping\n"+capability_lines+"\n\n## Official references\n"+docs+"\n"
     return out
 
 def main():
@@ -95,8 +96,9 @@ def main():
             status=profile.get("verification_status")
             verified_on=profile.get("last_verified")
             if status not in {"pending","verified"}: raise ValueError("Invalid verification status for "+provider_id)
-            if status=="verified" and (not isinstance(verified_on,str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}",verified_on)):
-                raise ValueError("Verified provider profile requires ISO last_verified date: "+provider_id)
+            if status=="verified":
+                try: datetime.date.fromisoformat(verified_on)
+                except (TypeError, ValueError): raise ValueError("Verified provider profile requires a real ISO date: "+provider_id)
             if status=="pending" and verified_on is not None: raise ValueError("Pending provider profile must not have last_verified date: "+provider_id)
             if status!="verified" and "native" in profile.get("capabilities",{}).values():
                 raise ValueError("Native capability requires verified provider profile: "+provider_id)
@@ -110,6 +112,10 @@ def main():
         desired=render(cfg["providers"],agents)
         old=json.loads(MANIFEST.read_text(encoding="utf-8")) if MANIFEST.exists() else {"version":1,"files":{}}
         if old.get("version")!=1 or not isinstance(old.get("files"),dict): raise ValueError("Invalid manifest")
+        for rel, digest in old["files"].items():
+            safe_path(rel)
+            if not isinstance(digest,str) or not re.fullmatch(r"[0-9a-f]{64}",digest):
+                raise ValueError("Invalid manifest SHA-256 entry: "+str(rel))
         hashes={p:hashlib.sha256(c.encode()).hexdigest() for p,c in sorted(desired.items())}
         problems=[]
         for rel,content in desired.items():
