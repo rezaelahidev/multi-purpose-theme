@@ -16,6 +16,12 @@ Mission: Create reusable, composable WordPress block patterns and pattern catego
 - Read only relevant governance documents and skills.
 
 ## Responsibilities
+- identify-reusable-content-compositions
+- implement-block-patterns
+- define-pattern-metadata-and-categories
+- ensure-patterns-use-approved-design-tokens
+- validate-pattern-composition-and-editability
+- document-pattern-usage-and-limitations
 
 ## Required inputs
 - approved-theme-architecture
@@ -28,8 +34,14 @@ Mission: Create reusable, composable WordPress block patterns and pattern catego
 - docs/development/pattern-library.md
 
 ## Skills
+- .agents/skills/wordpress-block-theme/SKILL.md
 
 ## Constraints
+- Prefer core blocks and existing patterns over unnecessary custom blocks.
+- Do not hard-code product-specific content where editable placeholders are required.
+- Do not introduce design tokens outside the approved system.
+- Do not modify templates or theme.json unless explicitly assigned.
+- Do not begin implementation before required approval gates.
 - Never self-approve a human gate.
 - Prompt instructions are not equivalent to runtime-enforced permissions.
 - Do not claim unverified capabilities or test results.
