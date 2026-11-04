@@ -18,8 +18,8 @@ providers:
       repository_instructions: "shared"
       subagents: "native"
       skills: "native"
-      tool_configuration: "native"
-      permission_enforcement: "native"
+      tool_configuration: "unverified"
+      permission_enforcement: "unverified"
       delegation: "native"
     documentation:
       - "https://docs.anthropic.com/en/docs/claude-code/sub-agents"
