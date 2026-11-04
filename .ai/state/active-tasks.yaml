@@ -15,6 +15,21 @@ tasks:
       - "Four core specifications reviewed"
       - "Repository layout approved"
       - "Provider portability constraints understood"
+    file_scope:
+      include:
+        - ".ai/core/**"
+        - ".ai/contracts/**"
+        - ".ai/adapters/**"
+        - "scripts/**"
+        - "tests/**"
+        - ".cursor/**"
+        - ".claude/**"
+        - ".codex/**"
+        - "README.md"
+        - "requirements-dev.txt"
+      exclude:
+        - ".ai/state/**"
+        - "docs/decisions/**"
     approval:
       required: true
       status: "pending"
