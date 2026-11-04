@@ -169,3 +169,40 @@ tasks:
     approval:
       required: true
       status: "pending"
+
+  - id: "TASK-UX-INTERFACE-001"
+    title: "Specify priority E-commerce and Blog / Magazine interfaces for international and Iranian users"
+    status: "READY"
+    assigned_agent: "human"
+    dependencies:
+      - "TASK-UX-FOUNDATION-001"
+    inputs:
+      - "docs/design/ux-architecture.md"
+      - "docs/design/user-journeys.md"
+      - ".ai/core/agent-contract.md"
+    expected_outputs:
+      - "docs/design/interface-specifications.md"
+      - "Bilingual E-commerce interface and state specifications"
+      - "Bilingual Blog / Magazine interface and editorial reading specifications"
+      - "Open decisions for WordPress, WooCommerce, localization, and Iran-specific integrations"
+    acceptance_criteria:
+      - "E-commerce is primary and Blog / Magazine is second priority"
+      - "Both archetypes specify English/LTR, Persian/RTL, and mixed-script behavior"
+      - "Responsive, accessibility, empty, loading, error, and success states are documented"
+      - "Theme and plugin responsibilities are explicit"
+      - "Iran-specific provider claims are not made without validation"
+      - "No production theme implementation files are modified"
+      - "All repository changes are on a verified non-master branch and delivered through a pull request"
+    file_scope:
+      include:
+        - "docs/design/**"
+        - ".ai/state/**"
+      exclude:
+        - "theme.json"
+        - "templates/**"
+        - "parts/**"
+        - "patterns/**"
+        - "blocks/**"
+    approval:
+      required: true
+      status: "pending"
