@@ -178,7 +178,50 @@ The recommended direction is **curated flexibility with extensibility**, pending
 
 This is a recommendation, not a finalized decision. The owner must explicitly choose the customization philosophy.
 
-## 9. Cross-cutting quality requirements
+
+## 9. International and Iranian-market experience requirements
+
+International usability and Iranian-market usability are equal product requirements. Iran is not a separate archetype or a reduced/local-only edition: every archetype, shared journey, pattern family and relevant admin/editor workflow must provide a usable experience for both general/international audiences and Iranian users.
+
+### 9.1 Locale and language model
+
+- Support Persian (fa-IR) as a first-class content and interface locale, alongside English (en) as the initial international reference locale; keep the architecture extensible to additional locales.
+- Support RTL and LTR at the document, component, editor-preview and mixed-content levels. Direction must be semantic and context-aware, not implemented by globally reversing layouts.
+- Use direction-aware CSS/logical properties and test mixed Persian/Latin text, URLs, email addresses, product codes, prices, numbers and punctuation.
+- Persian typography must use a legally distributable, performant font stack with appropriate weights, line-height, numerals and fallback behavior. Do not assume a specific font until licensing and performance are checked.
+- Handle Persian text shaping, ZWNJ, Arabic/Persian character variants, long labels and translated content without clipping or broken line wrapping.
+- Provide locale-appropriate date, time, number, currency and calendar presentation. Calendar choice and conversion behavior must be explicit and configurable; do not silently transform stored data.
+- Keep content translation separate from layout direction: Persian content may appear in an LTR site and vice versa.
+
+### 9.2 Iran-specific operational and ecosystem fit
+
+- Treat Iran-specific payment gateways, shipping providers, SMS services, local forms, analytics, maps, and commerce/LMS/community integrations as compatibility targets to evaluate, not functionality the theme itself owns.
+- For E-commerce, support clear presentation of Iranian toman/rial pricing conventions, price labels, product availability, shipping/return information, checkout notices and trust information. Currency storage, conversion, tax, payment and order rules remain owned by WooCommerce and its configured extensions.
+- Do not hard-code a currency, gateway, shipping provider, legal statement, trust badge or regulatory claim. These must be configurable and supplied by the site owner or a compatible plugin.
+- For lead generation, membership and education, patterns must accommodate locally relevant contact methods and service providers (for example phone/SMS and locally used forms) without making them mandatory or excluding international alternatives.
+- Do not assume that an international SaaS service, payment provider, font CDN, analytics platform or external asset host is reachable or usable from Iran. Avoid unnecessary external dependencies; document graceful fallbacks and allow self-hosted assets where licensing permits.
+- Any claim about Iranian law, tax, privacy, consumer rights, payment availability or regulatory compliance requires current, authoritative validation. The theme must not present legal compliance as guaranteed.
+
+### 9.3 Dual-market content and conversion
+
+- Patterns must support both international and Iranian content density, terminology, trust signals, contact conventions and calls to action.
+- Iranian-ready demo content must be written naturally in Persian, use realistic local examples and avoid merely machine-translated English placeholders.
+- International demo content must remain natural in English; neither locale should be treated as a mirrored afterthought.
+- Support configurable localized CTA labels and contact options. Do not embed Iran-only assumptions in shared templates or patterns.
+- Where a site serves both markets, support language switching and preserve the user's current content context when a translation exists.
+
+### 9.4 Validation matrix
+
+Every archetype and shared component must be reviewed in at least these configurations:
+1. English LTR / international content.
+2. Persian RTL / Iran-oriented content.
+3. Mixed Persian and Latin content, including prices, SKUs, URLs and contact details.
+4. Narrow/mobile and wide/desktop viewports.
+5. Missing optional local integration or unavailable external service.
+
+The release checklist must cover typography, text shaping, direction, navigation, forms, prices, dates, numbers, media, plugin UI, accessibility, performance and fallback behavior in both locales.
+
+## 10. Cross-cutting quality requirements
 
 - Responsive behavior must be specified for narrow, medium and wide viewports.
 - All interactive controls must be keyboard operable and have visible focus.
@@ -189,7 +232,7 @@ This is a recommendation, not a finalized decision. The owner must explicitly ch
 - Core Web Vitals/performance impact should be considered for fonts, images, effects and scripts.
 - Plugin compatibility must be tested against named supported versions; compatibility must not be implied by visual placeholders.
 
-## 10. Decisions and assumptions requiring owner review
+## 11. Decisions and assumptions requiring owner review
 
 | Decision | Current status | Impact |
 |---|---|---|
@@ -199,11 +242,11 @@ This is a recommendation, not a finalized decision. The owner must explicitly ch
 | Primary site-owner persona | Open | Determines onboarding complexity and editor guidance |
 | Customization philosophy | Proposed curated flexibility; not approved | Determines exposed controls and variation strategy |
 | Minimum WordPress version | Open | Determines `theme.json` schema and supported features |
-| RTL/Persian first-release requirement | Open | Affects typography, navigation, layout and QA baseline |
+| Persian/RTL and Iran-market readiness | **Required cross-cutting product requirement** | Must be validated across every archetype and user journey, alongside English/LTR |
 | Commerce/LMS/community plugin targets | Open | Determines integration and compatibility test scope |
 | Demo content / starter-site packaging | Open | Determines whether onboarding includes import/setup functionality |
 
-## 11. Approval and handoff
+## 12. Approval and handoff
 
 This document can be reviewed as a UX architecture proposal, but it is not an approved implementation specification. Before the Design System Agent defines canonical token values or the theme implementation begins:
 
