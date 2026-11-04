@@ -27,7 +27,7 @@
     ".claude/agents/performance-agent.md": "329bf9f10adb5035a8209634acfea1370f07cfbe9bec03d17a3edfe845bf9607",
     ".claude/agents/security-agent.md": "ba1acffc4a491dc9380c02b4b29f07cf4f38da02b01eb8f9962bf119ba7ae02a",
     ".claude/agents/template-engineer.md": "1dc54d95806d8c54146454eb9282c3b49da1ac38605f90e1d062acd8562f61e8",
-    ".claude/agents/ux-ui-architect.md": "8be512006d8d5422561c0e6c64773d66ae8b382379a0bcb2ec3bd13cbb580ee0",
+    ".claude/agents/ux-ui-architect.md": "88b6effeba4654e7a0faccf9a0576c6a7d4db95f12dbfe6b0fd06b5f8d6f777d",
     ".codex/agents/block-development-agent.toml": "f01d51875f018329d83d19c9d23714fca4b0e4937049cd86b1e07da232a21ccc",
     ".codex/agents/design-system-agent.toml": "9717bf56d28d8b60c9d16fc3fd3627b3513309b1a0a17008f94333b51bb57786",
     ".codex/agents/documentation-agent.toml": "18cd18322ea95eb235ef63942635ea22f3b01e2fba913445c2636b36307442f6",
@@ -35,7 +35,7 @@
     ".codex/agents/performance-agent.toml": "13690e235a8214eb55aa257b1fcdf35e841a6ff3e9c1062eee1a3064a1083908",
     ".codex/agents/security-agent.toml": "15ba44cfc955cc67d4c4bfe8f839c89b08a76333eceb475a0ece8675a5040f9c",
     ".codex/agents/template-engineer.toml": "dc7417eb477802d47e21aec3292dc7ca92c75864f6b5b5ad75cad521ec7f4a41",
-    ".codex/agents/ux-ui-architect.toml": "fa3e4c9fbd0668f05cc5e1f568ec0c202635cb744d28c194af602040fda92572",
+    ".codex/agents/ux-ui-architect.toml": "77e32ab5995cb168b774cf0051df58e3e20814330bf0eae618228de4a0f5eeb4",
     ".cursor/agents/block-development-agent.md": "b1c559e23f3c26b2c929abae9f38d12ef7f5230eaf21d9c22f1d9a8fcb373488",
     ".cursor/agents/design-system-agent.md": "e4dd073a78f425adc7ad3286e8f86f02553a927dc7a8e7c7d28f4dbd9d08af13",
     ".cursor/agents/documentation-agent.md": "f49371beebbf2d7dd0f56d94d004435136d58e4540f54c73b937439ac2161be0",
@@ -43,6 +43,6 @@
     ".cursor/agents/performance-agent.md": "329bf9f10adb5035a8209634acfea1370f07cfbe9bec03d17a3edfe845bf9607",
     ".cursor/agents/security-agent.md": "ba1acffc4a491dc9380c02b4b29f07cf4f38da02b01eb8f9962bf119ba7ae02a",
     ".cursor/agents/template-engineer.md": "1dc54d95806d8c54146454eb9282c3b49da1ac38605f90e1d062acd8562f61e8",
-    ".cursor/agents/ux-ui-architect.md": "8be512006d8d5422561c0e6c64773d66ae8b382379a0bcb2ec3bd13cbb580ee0"
+    ".cursor/agents/ux-ui-architect.md": "88b6effeba4654e7a0faccf9a0576c6a7d4db95f12dbfe6b0fd06b5f8d6f777d"
   }
 }
