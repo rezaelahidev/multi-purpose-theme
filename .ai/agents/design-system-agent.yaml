@@ -50,6 +50,7 @@ agent:
     - "Do not silently change established tokens or style variation contracts."
     - "Coordinate theme.json ownership with Theme Architect and implementation owners."
     - "Do not implement templates, patterns, or custom blocks."
+    - "Never commit or push directly to master; all repository changes must use a verified feature branch and pull request."
     - "Design tokens and component guidance must support both international English/LTR and Iranian Persian/RTL use cases."
     - "Specify licensed Persian font strategy, script fallbacks, line-height, numeral behavior, logical spacing/direction, and mixed-script handling; do not assume one font or hard-code RTL-only layouts."
     - "Do not hard-code Iranian currency, calendar, payment, shipping, or legal assumptions into global tokens; use configurable semantic presentation and plugin-owned behavior."
